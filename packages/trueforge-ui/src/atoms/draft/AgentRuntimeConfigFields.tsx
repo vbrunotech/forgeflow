@@ -1,0 +1,452 @@
+'use client';
+
+import { useTrueForgeAgentSpec } from '@truefoundry/trueforge-assistant-ui-runtime';
+import { useMemo, type ReactNode } from 'react';
+
+import { Icon } from '../../icons/Icon.js';
+import { readSandboxEnvironmentName, sandboxWithEnvironmentName } from '../../server/draftSpecPreferences.js';
+import { useServerCapabilities } from '../../server/ServerContext.js';
+import { useOptionalShellMode } from '../../server/ShellModeContext.js';
+import type { AgentCompactionConfig, AgentRuntimeConfig } from '../../server/types.js';
+import { useReadySandboxEnvironments } from '../environments/useReadySandboxEnvironments.js';
+import { cn } from '../lib/cn.js';
+import { auiInputClass } from '../lib/inputClasses.js';
+import { PopoverSelect } from '../primitives/PopoverSelect.js';
+import { Switch } from '../primitives/Switch.js';
+import { Tooltip } from '../primitives/Tooltip.js';
+import { WEB_SEARCH_ONE_WAY_OFF_HINT, WEB_SEARCH_UNAVAILABLE_HINT, webSearchGate } from './agentCapabilities.js';
+
+export type AgentRuntimeConfigFieldsProps = {
+  value: AgentRuntimeConfig;
+  sandboxAvailable: boolean;
+  hasSkills: boolean;
+  disabled?: boolean;
+  showCapabilities?: boolean;
+  layout?: 'compact' | 'detailed';
+  onChange: (value: AgentRuntimeConfig) => void;
+};
+
+function parseIterationLimit(raw: string): number | null {
+  if (raw.trim() === '') return null;
+  const parsed = Number(raw);
+  return Number.isInteger(parsed) && Number.isFinite(parsed) ? Math.max(1, Math.min(1024, parsed)) : null;
+}
+
+function parsePositiveInteger(raw: string): number | null {
+  if (raw.trim() === '') return null;
+  const parsed = Number(raw);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : null;
+}
+
+const ENVIRONMENT_LOCKED_HINT = "Can't change the environment after a chat has started";
+const NO_SANDBOX_PROVIDER_HINT = 'No sandbox provider yet, add one in Settings → Sandbox';
+const DEFAULT_COMPACTION_THRESHOLD_TOKENS = 50_000;
+
+const COMPACTION_THRESHOLD_MODE_OPTIONS = [
+  { value: 'auto', label: 'Auto' },
+  { value: 'custom', label: 'Custom' },
+] as const;
+
+type CompactionThresholdMode = (typeof COMPACTION_THRESHOLD_MODE_OPTIONS)[number]['value'];
+
+type RuntimeSwitchField = {
+  label: string;
+  description: string;
+  checked: boolean;
+  disabled?: boolean;
+  disabledTooltip?: string;
+  update: (enabled: boolean) => AgentRuntimeConfig;
+};
+
+/** Consequence of the row above that the user should read before flipping it. */
+function RowWarning({ children }: { children: ReactNode }) {
+  return (
+    <p
+      role="status"
+      className="border-warning-bg bg-warning-bg/10 text-warning-bg mt-2 flex items-start gap-2 rounded-md border px-3 py-2 text-xs"
+    >
+      <Icon name="circle-exclamation" className="size-3.5 shrink-0" aria-hidden />
+      <span className="flex w-full items-center justify-between gap-1">{children}</span>
+    </p>
+  );
+}
+
+export function AgentRuntimeConfigFields({
+  value,
+  sandboxAvailable,
+  hasSkills,
+  disabled = false,
+  showCapabilities = true,
+  layout = 'compact',
+  onChange,
+}: AgentRuntimeConfigFieldsProps) {
+  const shell = useOptionalShellMode();
+  const capabilities = useServerCapabilities();
+  const environmentsCapabilityEnabled = capabilities?.sandbox?.environments?.enabled === true;
+  const { environments: readyEnvironments, refetch: refetchEnvironments } = useReadySandboxEnvironments();
+  const { draftSessionId } = useTrueForgeAgentSpec();
+  // Turns reuse the session sandbox, so the environment is fixed once a chat has started.
+  const environmentLocked = draftSessionId != null;
+  const selectedEnvironmentName = readSandboxEnvironmentName(value.sandbox);
+
+  const environmentOptions = useMemo(() => {
+    const options: Array<{ value: string; label: string; disabled?: boolean }> = readyEnvironments.map(env => ({
+      value: env.name,
+      label: env.name,
+    }));
+    // Keep a deleted session/agent environment visible so the control does not fall back to Select.
+    if (selectedEnvironmentName !== 'default' && !options.some(option => option.value === selectedEnvironmentName)) {
+      options.unshift({
+        value: selectedEnvironmentName,
+        label: selectedEnvironmentName,
+        disabled: true,
+      });
+    }
+    return options;
+  }, [readyEnvironments, selectedEnvironmentName]);
+
+  const withCompaction = (compaction: AgentCompactionConfig): AgentRuntimeConfig => ({
+    ...value,
+    contextManagement: {
+      ...value.contextManagement,
+      compaction,
+      largeToolResponse: value.contextManagement?.largeToolResponse ?? { enabled: true },
+    },
+  });
+  const applyCompaction = (compaction: AgentCompactionConfig) => onChange(withCompaction(compaction));
+
+  const capabilityFields: RuntimeSwitchField[] = [
+    {
+      label: 'Dynamic sub-agents',
+      description: 'Allow the agent to delegate complex work to focused sub-agents.',
+      checked: value.dynamicSubAgents?.enabled ?? true,
+      update: enabled => ({ ...value, dynamicSubAgents: { enabled } }),
+    },
+    {
+      label: 'Generative UI',
+      description: 'Allow rich interactive UI blocks in agent responses.',
+      checked: value.generativeUi?.enabled ?? true,
+      update: enabled => ({ ...value, generativeUi: { enabled } }),
+    },
+    {
+      label: 'Ask user questions',
+      description: 'Allow the agent to pause and ask for clarification.',
+      checked: value.askUserQuestions?.enabled ?? true,
+      update: enabled => ({ ...value, askUserQuestions: { enabled } }),
+    },
+  ];
+  const sandboxEnabled = value.sandbox?.enabled ?? false;
+
+  const environmentSelect = (
+    <PopoverSelect
+      aria-label="Environment"
+      value={selectedEnvironmentName}
+      options={environmentOptions}
+      disabled={disabled || environmentLocked || !sandboxAvailable || !sandboxEnabled}
+      className="w-48"
+      onOpenChange={nextOpen => {
+        if (nextOpen) void refetchEnvironments();
+      }}
+      onValueChange={selected =>
+        onChange({
+          ...value,
+          sandbox: sandboxWithEnvironmentName(value.sandbox, selected === 'default' ? undefined : selected),
+        })
+      }
+    />
+  );
+  const compactionEnabled = value.contextManagement?.compaction?.enabled ?? true;
+  const thresholdMode: CompactionThresholdMode =
+    value.contextManagement?.compaction?.trigger != null ? 'custom' : 'auto';
+  const webSearchChecked = value.webSearch?.enabled ?? capabilities?.webSearch?.enabled === true;
+  // A spec that already searches the web can still be turned off; only turning it back on
+  // needs the capability, so the row stays visible either way and says why it is locked.
+  const { locked: webSearchLocked, offIsFinal: webSearchOffIsFinal } = webSearchGate({
+    capabilities,
+    enabled: webSearchChecked,
+  });
+  const webSearchField: RuntimeSwitchField = {
+    label: 'Web search',
+    description: 'Allow the agent to search the web and fetch pages.',
+    checked: webSearchChecked,
+    disabled: webSearchLocked,
+    ...(webSearchLocked ? { disabledTooltip: capabilities?.webSearch?.reason ?? WEB_SEARCH_UNAVAILABLE_HINT } : {}),
+    update: enabled => ({ ...value, webSearch: { enabled } }),
+  };
+  const sandboxField: RuntimeSwitchField = {
+    label: 'Sandbox',
+    description: 'Provide an isolated environment for code, files, and skills.',
+    checked: sandboxEnabled,
+    disabled: !sandboxAvailable || hasSkills,
+    disabledTooltip: !sandboxAvailable
+      ? NO_SANDBOX_PROVIDER_HINT
+      : hasSkills
+        ? 'Always on while skills are attached — remove them to turn it off'
+        : undefined,
+    update: enabled => ({ ...value, sandbox: { ...value.sandbox, enabled } }),
+  };
+  const fileDownloadsField: RuntimeSwitchField = {
+    label: 'File downloads',
+    description: 'Allow users to download files produced in the sandbox.',
+    checked: value.sandbox?.fileDownloads ?? true,
+    disabled: !sandboxAvailable || !sandboxEnabled,
+    update: fileDownloads => ({
+      ...value,
+      sandbox: { ...value.sandbox, fileDownloads },
+    }),
+  };
+  const compactionField: RuntimeSwitchField = {
+    label: 'Context compaction',
+    description: 'Summarize older turns as context fills.',
+    checked: compactionEnabled,
+    update: enabled => withCompaction({ ...value.contextManagement?.compaction, enabled }),
+  };
+  const largeToolResponseField: RuntimeSwitchField = {
+    label: 'Large tool response offloading',
+    description: 'Move large tool output to the sandbox and retain a preview.',
+    checked: value.contextManagement?.largeToolResponse?.enabled ?? true,
+    disabled: !sandboxAvailable,
+    disabledTooltip: !sandboxAvailable ? `Offloading needs a sandbox. ${NO_SANDBOX_PROVIDER_HINT}` : undefined,
+    update: enabled => ({
+      ...value,
+      contextManagement: {
+        ...value.contextManagement,
+        compaction: value.contextManagement?.compaction ?? { enabled: true },
+        largeToolResponse: { enabled },
+      },
+    }),
+  };
+  const runtimeFields = [sandboxField, fileDownloadsField, compactionField, largeToolResponseField];
+  const compactionThreshold =
+    value.contextManagement?.compaction?.trigger?.value ?? DEFAULT_COMPACTION_THRESHOLD_TOKENS;
+
+  const switchField = ({
+    field,
+    className,
+    wrapperClassName,
+  }: {
+    field: RuntimeSwitchField;
+    className?: string;
+    wrapperClassName?: string;
+  }) => {
+    const control = (
+      <Switch
+        checked={field.checked}
+        disabled={disabled || field.disabled}
+        onCheckedChange={enabled => onChange(field.update(enabled))}
+        aria-label={field.label}
+      />
+    );
+
+    return (
+      <div
+        key={field.label}
+        className={cn(
+          'flex w-full min-w-0',
+          wrapperClassName,
+          className ?? 'items-center justify-between gap-3 py-1.5',
+        )}
+      >
+        <span className="min-w-0">
+          <span className={cn('text-text-primary', layout === 'detailed' ? 'block text-sm font-medium' : 'text-xs')}>
+            {field.label}
+          </span>
+          {layout === 'detailed' ? (
+            <span className="text-text-secondary mt-0.5 block text-xs leading-snug">{field.description}</span>
+          ) : null}
+        </span>
+        {field.disabledTooltip ? (
+          <Tooltip content={field.disabledTooltip}>
+            <span className="inline-flex">{control}</span>
+          </Tooltip>
+        ) : (
+          control
+        )}
+      </div>
+    );
+  };
+
+  if (layout === 'detailed') {
+    const rowClassName = 'items-center justify-between gap-4';
+    return (
+      <div className="divide-y divide-border">
+        {showCapabilities ? (
+          // Stack below `md` so narrow bottom sheets retain usable control widths.
+          <div className="flex flex-col gap-3 py-4 md:flex-row md:gap-4">
+            {capabilityFields.map((field, index) =>
+              switchField({
+                field,
+                className: 'items-start justify-between gap-3',
+                wrapperClassName: cn(
+                  'flex-1',
+                  index < capabilityFields.length - 1 &&
+                    'border-b border-border pb-4 md:border-b-0 md:border-r md:pb-0 md:pr-4',
+                ),
+              }),
+            )}
+          </div>
+        ) : null}
+        <div className={cn('flex py-4', rowClassName)}>
+          <span className="min-w-0">
+            <span className="text-text-primary block text-sm font-medium">Iteration limit</span>
+            <span className="text-text-secondary mt-0.5 block text-xs leading-snug">
+              Maximum agent-loop iterations for one turn.
+            </span>
+          </span>
+          <input
+            type="number"
+            min={1}
+            max={1024}
+            disabled={disabled}
+            aria-label="Iteration limit"
+            value={value.iterationLimit ?? 512}
+            className={auiInputClass('h-8 w-24 shrink-0 disabled:opacity-60')}
+            onChange={event => {
+              const iterationLimit = parseIterationLimit(event.target.value);
+              if (iterationLimit !== null) onChange({ ...value, iterationLimit });
+            }}
+          />
+        </div>
+        <div className="py-4">
+          {switchField({ field: webSearchField, className: rowClassName })}
+          {webSearchOffIsFinal ? <RowWarning>{WEB_SEARCH_ONE_WAY_OFF_HINT}</RowWarning> : null}
+        </div>
+        <section className="py-4">
+          {switchField({ field: sandboxField, className: rowClassName })}
+          {sandboxAvailable && !sandboxEnabled ? (
+            <RowWarning>
+              <span>Disabling sandbox will degrade trueforge&apos;s performance.</span>
+              <a
+                className="flex cursor-pointer items-center gap-1 text-xs font-medium text-amber-500"
+                href="https://trueforge.dev/key-features/code-mode#what-is-code-mode"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Learn more</span>
+                <Icon name="external-link" className="size-3" />
+              </a>
+            </RowWarning>
+          ) : null}
+          <div className={`mt-3 border-l-2 border-primary-button-bg/50 pl-3 ${sandboxEnabled ? '' : 'opacity-50'}`}>
+            {environmentsCapabilityEnabled ? (
+              <div className={cn('flex py-4', rowClassName)}>
+                <span className="min-w-0 flex-1">
+                  <span className="text-text-primary block text-sm font-medium">Environment</span>
+                  <p className="text-text-secondary mt-0.5 text-xs leading-snug">
+                    Saved sandbox setup this agent uses when it runs.
+                  </p>
+                  {shell && sandboxEnabled ? (
+                    <button
+                      type="button"
+                      onClick={() => shell.setEnvironmentsOpen(true)}
+                      className="text-primary-button-bg mt-1.5 inline-flex items-center gap-1 text-xs hover:underline"
+                    >
+                      <span>Manage Environments</span>
+                      <Icon name="external-link" className="size-3" />
+                    </button>
+                  ) : null}
+                </span>
+                <div className="flex shrink-0 items-center">
+                  {environmentLocked ? (
+                    <Tooltip content={ENVIRONMENT_LOCKED_HINT}>
+                      <span className="inline-flex">{environmentSelect}</span>
+                    </Tooltip>
+                  ) : (
+                    environmentSelect
+                  )}
+                </div>
+              </div>
+            ) : null}
+            {switchField({ field: fileDownloadsField, className: rowClassName })}
+          </div>
+        </section>
+        <section className="py-4">
+          {switchField({ field: compactionField, className: rowClassName })}
+          <div
+            className={cn(
+              'mt-3 flex border-l-2 border-primary-button-bg/50 pl-3',
+              rowClassName,
+              compactionEnabled ? '' : 'opacity-50',
+            )}
+          >
+            <span className="min-w-0 flex-1">
+              <span className="text-text-primary block text-sm font-medium">Compaction threshold tokens</span>
+              <span className="text-text-secondary mt-0.5 block text-xs leading-snug">
+                {thresholdMode === 'auto'
+                  ? "Automatically trigger compaction at 80% of model's context window"
+                  : `Trigger compaction when input reaches ${compactionThreshold.toLocaleString()} tokens`}
+              </span>
+            </span>
+            <div className="flex shrink-0 items-center gap-2">
+              {thresholdMode === 'custom' ? (
+                <input
+                  type="number"
+                  min={1}
+                  disabled={disabled || !compactionEnabled}
+                  value={compactionThreshold}
+                  aria-label="Compaction threshold tokens"
+                  className={auiInputClass('h-8 w-28 disabled:opacity-60')}
+                  onChange={event => {
+                    const threshold = parsePositiveInteger(event.target.value);
+                    if (threshold === null) return;
+                    applyCompaction({
+                      enabled: compactionEnabled,
+                      trigger: { type: 'input_tokens', value: threshold },
+                    });
+                  }}
+                />
+              ) : null}
+              <PopoverSelect
+                aria-label="Compaction threshold mode"
+                value={thresholdMode}
+                options={COMPACTION_THRESHOLD_MODE_OPTIONS}
+                disabled={disabled || !compactionEnabled}
+                className="w-28"
+                onValueChange={mode =>
+                  applyCompaction(
+                    mode === 'custom'
+                      ? {
+                          enabled: compactionEnabled,
+                          trigger: { type: 'input_tokens', value: DEFAULT_COMPACTION_THRESHOLD_TOKENS },
+                        }
+                      : { enabled: compactionEnabled },
+                  )
+                }
+              />
+            </div>
+          </div>
+        </section>
+        {switchField({ field: largeToolResponseField, className: cn('py-4', rowClassName) })}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <label className="mb-2 block text-xs">
+        <span className="text-text-secondary mb-1 block">Iteration limit</span>
+        <input
+          type="number"
+          min={1}
+          max={1024}
+          disabled={disabled}
+          value={value.iterationLimit ?? 512}
+          className={auiInputClass('h-8 disabled:opacity-60')}
+          onChange={event => {
+            const iterationLimit = parseIterationLimit(event.target.value);
+            if (iterationLimit !== null) onChange({ ...value, iterationLimit });
+          }}
+        />
+      </label>
+      {[webSearchField, ...runtimeFields, ...(showCapabilities ? capabilityFields : [])].map(field =>
+        switchField({ field }),
+      )}
+    </div>
+  );
+}
+
+declare module '../../theme/SlotsProvider.js' {
+  interface AtomSlots {
+    AgentRuntimeConfigFields: typeof AgentRuntimeConfigFields;
+  }
+}

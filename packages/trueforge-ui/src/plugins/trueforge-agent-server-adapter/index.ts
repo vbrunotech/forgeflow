@@ -1,0 +1,131 @@
+/**
+ * Built-in Harness → AgentUIServer factory for `<TrueForgeUI server={{ type: "trueforge", … }} />`.
+ */
+import { createTrueForgeServer } from '../../server/createTrueForgeServer.js';
+import type { CatalogServer, PermissionsServer } from '../../server/types.js';
+import { createHarnessAgentMetricsServer } from './agentMetricsServer.js';
+import { createHarnessAgentSessionsServer } from './agentSessionsServer.js';
+import { createHarnessBuilderServer } from './builderServer.js';
+import { createConnectorCatalog } from './catalogs/connectorCatalog.js';
+import { createModelProviderCatalog } from './catalogs/modelProviderCatalog.js';
+import { createSandboxProviderCatalog } from './catalogs/sandboxProviderCatalog.js';
+import { createSkillCatalog } from './catalogs/skillCatalog.js';
+import { createWebSearchProviderCatalog } from './catalogs/webSearchProviderCatalog.js';
+import { createHarnessChatServer } from './chatServer.js';
+import { createTrueForgeClient, type CreateTrueForgeClientOptions } from './client.js';
+import { createConfigurationServer } from './configurationServer.js';
+import { createHarnessPermissionsServer } from './permissionsServer.js';
+import { createSandboxEnvironmentServer } from './sandboxEnvironments/sandboxEnvironmentServer.js';
+import { createScheduleServer } from './schedules/scheduleServer.js';
+import { createHarnessSessionAccessServer } from './sessionAccessServer.js';
+import type { HarnessAgentSpec } from './types.js';
+import { createWorkflowServer } from './workflows/workflowServer.js';
+
+export { createHarnessAgentMetricsServer, type CreateHarnessAgentMetricsServerOptions } from './agentMetricsServer.js';
+export {
+  createHarnessAgentSessionsServer,
+  type CreateHarnessAgentSessionsServerOptions,
+} from './agentSessionsServer.js';
+export {
+  createHarnessBuilderServer,
+  modelProviderLogosByName,
+  toModelSelection,
+  type CreateHarnessBuilderServerOptions,
+} from './builderServer.js';
+export {
+  createConnectorCatalog,
+  toHarnessAuth,
+  toHarnessManifest as toHarnessConnectorManifest,
+  toUiConnector,
+  toUiConnectorFromReadEntry,
+} from './catalogs/connectorCatalog.js';
+export {
+  createModelProviderCatalog,
+  toHarnessModelProvider,
+  toUiCatalogModelProviderEntry,
+  toUiModelProvider,
+} from './catalogs/modelProviderCatalog.js';
+export {
+  configFromHarness,
+  createSandboxProviderCatalog,
+  filterUiSandboxProviders,
+  isDaytonaSandboxConfig,
+  toHarnessManifest as toHarnessSandboxManifest,
+  toUiCatalogEntry as toUiSandboxCatalogEntry,
+  toUiSandboxProvider,
+  type DaytonaSandboxCatalogServer,
+  type DaytonaSandboxConfig,
+  type UiCreateSandboxProviderRequest,
+  type UiSandboxProvider,
+  type UiSandboxProviderCatalogEntry,
+  type UiUpdateSandboxProviderRequest,
+} from './catalogs/sandboxProviderCatalog.js';
+export { createSkillCatalog, toHarnessManifest as toHarnessSkillManifest, toUiSkill } from './catalogs/skillCatalog.js';
+export {
+  createWebSearchProviderCatalog,
+  filterUiWebSearchProviders,
+  toHarnessManifest as toHarnessWebSearchManifest,
+  toUiCatalogEntry as toUiWebSearchCatalogEntry,
+  toUiWebSearchProvider,
+} from './catalogs/webSearchProviderCatalog.js';
+export {
+  createHarnessChatServer,
+  toHarnessAgentSpec,
+  toUiAgentSpec,
+  type CreateHarnessChatServerOptions,
+} from './chatServer.js';
+export { createTrueForgeClient } from './client.js';
+export type { CreateTrueForgeClientOptions } from './client.js';
+export { createConfigurationServer } from './configurationServer.js';
+export { getCapabilities, listConfiguredMcpServers, listModels, listSkills } from './lists.js';
+export { createHarnessPermissionsServer, type CreateHarnessPermissionsServerOptions } from './permissionsServer.js';
+export { createSandboxEnvironmentServer } from './sandboxEnvironments/sandboxEnvironmentServer.js';
+export { createScheduleServer } from './schedules/scheduleServer.js';
+export {
+  createHarnessSessionAccessServer,
+  type CreateHarnessSessionAccessServerOptions,
+} from './sessionAccessServer.js';
+export type { HarnessAgentSpec, HarnessMcpServerMount, HarnessSkillMount } from './types.js';
+export { createWorkflowServer } from './workflows/workflowServer.js';
+
+export type CreateTrueForgeAgentUIServerOptions = CreateTrueForgeClientOptions & {
+  /** Override the default Harness settings catalogs. */
+  catalog?: CatalogServer;
+  /** Optional host-provided resource permissions port. */
+  permissions?: PermissionsServer;
+};
+
+/**
+ * Compose chat + builder + agent sessions + default settings catalogs into an `AgentUIServer`.
+ */
+export function createTrueForgeAgentUIServer(options: CreateTrueForgeAgentUIServerOptions = {}) {
+  const { catalog: catalogOverride, permissions, ...clientOptions } = options;
+  const client = createTrueForgeClient(clientOptions);
+  const catalog =
+    catalogOverride ??
+    ({
+      modelCatalog: createModelProviderCatalog(client),
+      connectorCatalog: createConnectorCatalog(client),
+      skillCatalog: createSkillCatalog(client),
+      sandboxCatalog: createSandboxProviderCatalog(client),
+      webSearchCatalog: createWebSearchProviderCatalog(client),
+    } satisfies CatalogServer);
+
+  return createTrueForgeServer<HarnessAgentSpec>({
+    chatServer: createHarnessChatServer({ client }),
+    ...createHarnessBuilderServer({ client }),
+    catalog,
+    configuration: createConfigurationServer(client),
+    sessions: createHarnessAgentSessionsServer({ ...clientOptions, client }),
+    metrics: createHarnessAgentMetricsServer({ ...clientOptions, client }),
+    schedules: createScheduleServer({ client }),
+    workflows: createWorkflowServer(clientOptions),
+    sandboxEnvironments: createSandboxEnvironmentServer({ client }),
+    permissions: permissions ?? createHarnessPermissionsServer({ client }),
+    sessionAccess: createHarnessSessionAccessServer({ client }),
+    getMe: async () => {
+      const { data } = await client.auth.me();
+      return { tenantId: data.tenantId };
+    },
+  });
+}

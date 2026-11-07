@@ -1,0 +1,600 @@
+# pack-refs with: peeled fully-peeled sorted 
+3408a8e33014c2c48c50bf40cc1597752d122aa5 refs/remotes/origin/AGE-1368-cost_in_usd
+bae3bc5511837ae52d76938f8a54f1d8a7e7d8ba refs/remotes/origin/AGE-1368-running-metrics
+22662d4f45f7a2f97a6e58cb31611d19db186214 refs/remotes/origin/AGE-1395
+b8f6709e566c9e709936cb4a48ea313f0e52b279 refs/remotes/origin/AGE-1480
+395bd36d55ef2e2dd5e1db55e5c15b644c42ecdb refs/remotes/origin/AGE-1544-mcp-refactor-authorize
+ec78de5e09d239f14a26df6927c249284ce08acb refs/remotes/origin/AGE-1544-middleware
+f0d242b0458d70102c1f02af9926cc4fc99c264a refs/remotes/origin/AGE-1686
+1cc6e77dc0704dbaed0ee6a5cd33f4386bbf89de refs/remotes/origin/AGE-1879-api-path-naming
+0850840a86dad8d79e4da3640a01d984d6965369 refs/remotes/origin/AGE-2081
+ac2cf51be798979e8d5e0fac1b9158206133644f refs/remotes/origin/AGE-2126-2127
+4bfb7b7a418bb55172f6096615d1e120145ea39d refs/remotes/origin/AGE-2128-backend
+3aa6e42f7de23ffdf1bb953cdd158fe5c0008f4d refs/remotes/origin/AGE-2252
+bfa3946ba0ad077e0c32afc81c219d1f27deb88c refs/remotes/origin/AGE-2257
+b87790dda5814f0ede3b08c9b36f3062042e36ba refs/remotes/origin/add-helm-chart
+2d6873b1a06df794ef8338578c8bd3af17a63165 refs/remotes/origin/automation/changeset-check-and-dependabot-automerge
+e820e0a6bd2e8641c06f3bcb804127a621cd3d1d refs/remotes/origin/back-merge/v0.181.0
+aada947a34cef97592c09d0db686eb8e73a85028 refs/remotes/origin/back-merge/v0.182.0
+249af85d98f29dc84f2da170e0e382ad0d3eef0c refs/remotes/origin/back-merge/v0.183.0
+060ce7684f472134bc09e0e9b5de15e81fc14e8f refs/remotes/origin/backup-AGE-1647
+efcbd749693298ae643bf1a842c3cd7ce433ad01 refs/remotes/origin/backup-be-AGE-2128
+5268c056f2bc7ebea5e0506323d9dab954f19d1a refs/remotes/origin/base-prefix
+57546ffb0dc414b227a13c6330dd41045d4dfbd5 refs/remotes/origin/bugfix/emit-thread.created-on-exec
+0804b5557600abee43c3f7b09fdcd8ab4e84e157 refs/remotes/origin/bugfix/fix-manifest-env
+5eb6333d62044cba0d3dfb36ba831b7d1038d0ba refs/remotes/origin/bugfix/hv/completed-subagents-still-show-working-and-a-yellow-dot
+5417bb7f7dcad5590686bd2d3aab9855cefc6544 refs/remotes/origin/bugfix/hv/fix-405-error-on-ask-tfy-session-patch-api
+b9358eef147295e1e4961a7dcc07fe0f8b6b7f6b refs/remotes/origin/bugfix/hv/session-timeline-cancel-subagent
+9f77aa2af126c49b9f5c005ccd955344232d075a refs/remotes/origin/changeset-release/release-v0.4.0
+d3d1164a3e4d2e3f74d5454b6368f54594a93d69 refs/remotes/origin/cherry-pick/16e4716b-1148-419c-b28f-c71ebce9b23b/release-v0.177.0
+0843be74c05c5c26fe9176b66dc95fda246a1dc9 refs/remotes/origin/cherry-pick/f2ce833d-0711-4703-866a-feaf64acc370/release-v0.179.2
+8b607e31c0a838e6e6e55d262b92c675cf940989 refs/remotes/origin/chore/AGE-1757/edit-flow-is-confusing
+01280b9498e9a66b4e6ac799dcb8442cbc5ff72e refs/remotes/origin/chore/gv/agents-as-card
+8342655ec3bc250236f84725899a93738682001e refs/remotes/origin/chore/gv/fe-release-0.1.5
+cf922fce773f1d0897a418ef997fd275743db42f refs/remotes/origin/chore/gv/truefoundry-skills
+f409576b14bf8e083110847637eb3f8597a01cdc refs/remotes/origin/chore/hv/add-sentry-in-frontend-for-obeservibility
+c59ea8e2674cba148bed4b43550fc0fe0713f412 refs/remotes/origin/chore/hv/button-with-variants
+6908e411b682ba101a60088929bfd4ef750f0151 refs/remotes/origin/chore/hv/displaying-last-turn-status-in-sessions-list
+3a7413533888eac7dffebbde2f90290f442c7611 refs/remotes/origin/chore/hv/optimise-session-loading-to-reduce-delays-in-the-ui
+cff9bd6d71ac588418abfe41274d052ce708cc98 refs/remotes/origin/chore/hv/react-query-agent-library
+91e911e5ffa0f3b604fe366129f6f19df36aad81 refs/remotes/origin/chore/hv/react-query-envs-schedul-page
+1b82ef7a105c18099ceeeb34fac5121fdb659d1d refs/remotes/origin/chore/hv/react-query-server-client
+09c951668d15349f1e09638864e0b06bb788ee16 refs/remotes/origin/chore/hv/render-session-timeline-and-chat-as-soon-as-the-first-events
+5f12faf689006c54ca806fbfa4c2642c73ae9075 refs/remotes/origin/chore/hv/retry-llm-calls-after-the-stream-disconnects
+35c39f3ec8d430f4f0382728e9a24ebd7f107c3a refs/remotes/origin/chore/hv/sentry-dsn-docker-build-arg
+38a5e201262e9fcab214bbc3958efd5b02a81e83 refs/remotes/origin/chore/hv/session-loading-optimizations
+5e0acd5b743d0fd04c5f7fa78b9ccfb5f55e8496 refs/remotes/origin/chore/hv/user-permissions
+78a85db981ea5bf02701329116bc1b084855665e refs/remotes/origin/chore/model-catalog-sync-20261023
+0f49b7c7f18492129660ce78cb5b78fc51247476 refs/remotes/origin/chore/remove-parallel-from-catalog
+21068a53a32f318a63f30412dc3388868c37d86c refs/remotes/origin/cj-turn-stream-rebuild
+3d7da7093be9d3a2c5d7cc59221ce73749ae5d73 refs/remotes/origin/curate-model-catalog
+0d1d17152039330a8ee92a1af8602e18176dcc66 refs/remotes/origin/cursor/access-logs
+887cddc976834d7ba8426bc19da2b3c77f594213 refs/remotes/origin/cursor/env-bug-fixes
+09074222054a6600234139987d81526a8272e885 refs/remotes/origin/cursor/fix-945-mcp-inputschema-defs-d2a1
+9d7e2828b2db7b2d92be01dc0c81ff880a0eccd8 refs/remotes/origin/cursor/gateway-custom-endpoint-chat-c4d4
+ced094f72868a44c6ffc597d50a1fbbfe1aa38ca refs/remotes/origin/cursor/metadata-env
+cd483ff5485665fe377471c39c5ea6030cf2e220 refs/remotes/origin/cursor/schedule-index
+69bf75c6f46dbaee2eaa912e2a99008c943b71b8 refs/remotes/origin/cursor/schedule-notes
+def55748106a0e61f16e7fbc1163b17fafa2c184 refs/remotes/origin/cursor/tfy-sandbox-env-type-54fb
+a78f23d688fd97e1b3b0aa49e72b658ae2a4618d refs/remotes/origin/cursor/typesafe-mock-server-ca38
+528339541bf8afd115a4a2147589baecffe603ef refs/remotes/origin/dependabot/npm_and_yarn/npm-minor-and-patch-07580ea7a7
+b6eb10768d6a515e0ce34c7696184a36c1f90721 refs/remotes/origin/dependabot/npm_and_yarn/npm-security-bf1ec49610
+2f556cc1b2b8e3a87256950fe012191858dda923 refs/remotes/origin/dependabot/pip/benchmark/pip-eb7f04e273
+b957e4632a4094d53acdb0af77dc5d4ccd93e80a refs/remotes/origin/docs-tests
+f006b4bebb59f20b012460b25a7a541756ff013f refs/remotes/origin/docs/ui-sdk-server-customisations
+314875b3527cec5ee42fd720e7ae4c5e527c06e8 refs/remotes/origin/examples/agent-cookbook
+b01f5b8c5379d34f6e38056fc2126c52548b63e1 refs/remotes/origin/examples/content-builder
+51127c4bb640221e87ffce912d46b6bf5007cabe refs/remotes/origin/feat-approvals
+b73cfa6c1209f0741d4c5ffbc3734afba0df5771 refs/remotes/origin/feat/401-fix
+8229f0afc12fb85f96129386168df6ae0eb9155d refs/remotes/origin/feat/add-provider-name
+433eea460837d09a04170e83ef4814558a18c202 refs/remotes/origin/feat/controller-loop-zombie-turn
+768a1e9e9a9691f366c30d9c252850e2364652ca refs/remotes/origin/feat/fern-typescript-sdk-v4
+6b526e24021e19a48b7437dbd6ee51e2934f52c1 refs/remotes/origin/feat/inline-model-providers
+66cb97992261a76ac36596f803d14f021c07e8a5 refs/remotes/origin/feat/light-theme-palette
+ba33e356b2ac23427bfd5fefcbfca7d1d9d4eddb refs/remotes/origin/feat/logs-llm-req-id
+f1b422e34130f764f7e4920ef1e0f4d771d92ef8 refs/remotes/origin/feat/mcp-dcr
+af6229d79fb31539faedc0ecb7d6311be488e733 refs/remotes/origin/feat/mcp-passthrough-auth
+985975cc2e59fdf4eff29087557513e6370a97da refs/remotes/origin/feat/no-version-change
+91c1b90c3548ed06d7953252221d12737e9febdb refs/remotes/origin/feat/release-automation-chart-hotfixes
+3dc542180607fb39710c416b7531011abe3f1f40 refs/remotes/origin/feat/runtime-html-app-branding
+0957aff134420897d4afa9e1b15733a6c3d1bd27 refs/remotes/origin/feat/sandbo-env-feature-flagged
+b6eef3c3eb6e4710e5be97adeb1fba6e82754629 refs/remotes/origin/feat/sandbox-environments
+90912f804296894768155fade98d99c743703664 refs/remotes/origin/feat/sandbox-image-sync-status
+f6da51f480d042b522523061e3d4955c14381904 refs/remotes/origin/feat/sandbox-snapshot-sync
+2adb0b063ae82f4358a2a4bb4132da4e30178ea7 refs/remotes/origin/feat/snapshot-reactivate
+3c7f808f3287bb99bebdbcaccfaf9cb0b8e1531e refs/remotes/origin/feat/windows-support
+0390cfaaefc940e28cbb3acfe7f87cf43a1b76bb refs/remotes/origin/feat/wire-sandbox-env
+f9277cffa7a1a0dc18c98e7c0fd210e0f30633ed refs/remotes/origin/feat/x-tfy-new-header
+49a9c864b5ad8871ca1916185c95048848bc6ff2 refs/remotes/origin/feature/FRONTEN-2367/trueforge-descktop-app-poc
+a3a13956e99c2f90cca37b48c324812ad03b493a refs/remotes/origin/fix/connector-auth-type-selector
+2bcd649804e4e9a632ee3657a143da935b683f23 refs/remotes/origin/fix/daytona-on-error-callback-rename
+55e9b3e3df3089a621bbd593187fc36d03bbe372 refs/remotes/origin/fix/mcp-oauth-no-redirects
+f719ad5444c0fe4f845957bdb10e5802c297c422 refs/remotes/origin/fix/model-provider-delete
+ce7a57f44010191ee8c7130586210f7afa14c282 refs/remotes/origin/fix/skill-mcp-description-tooltips
+90b9c60ef7e5aef21809f9d34cf182adc8e1552d refs/remotes/origin/fix/sqlite-sandbox-build-metadata-default
+7321521907ffc1e51cea1d7fa7f7cef14f941c74 refs/remotes/origin/fix/ssrf-block-https-http-redirect
+06feae040c3861c6e677e088f2a1105a350dc2bb refs/remotes/origin/govinda/age-2550-displaying-last-turn-status-in-sessions-list
+3a3189debf3b5252c59754597d50f0c1455a3c6f refs/remotes/origin/ha/emit-pause
+220a3aca61a4af3b915b5ee81ff6758d45ca07c3 refs/remotes/origin/ha/mcp-poc
+933da99ab97e9c88460d54823cbb26ce6618a0c5 refs/remotes/origin/ha/pause-orchestrator
+0a1628475f2f7517953d69c1fb55be350b324afc refs/remotes/origin/ha/steal
+d2d560e8b06477b2beedad1212b18d5c2bab3030 refs/remotes/origin/ha/tf-mcp
+f0fc137db81e3e5b7f446419c2f93b7ec25ba247 refs/remotes/origin/hary/agent-memory-spec
+d5ff87de4aa87f30e901ca12e72b8958d8e07fa1 refs/remotes/origin/heal/ui-sdk-version-skew-0.182.0
+12bfa01ac2da15400cdc48f4e0ef0146c13c23bf refs/remotes/origin/local-sandbox
+379d26acdcd61035161aab743ddf492051353ebc refs/remotes/origin/main
+633edcc9d06f8754a3ac01057375406959e23630 refs/remotes/origin/release-v0.177.0
+7b67fedb6b6fdf8c4f6f171b29976326ef172b8a refs/remotes/origin/release-v0.177.1
+14e6e7de8d1399ca1c7108b3b8e90b1bc7a02388 refs/remotes/origin/release-v0.178.0
+208dc5f475b7394104e1b5e8d1087439b7d8432a refs/remotes/origin/release-v0.178.1
+1c95a683d9bd63e841df7ea994e24ca9c45e7a72 refs/remotes/origin/release-v0.178.2
+fac3ce597a33cc7255f754dbe896712b7897a8fd refs/remotes/origin/release-v0.178.3
+23f1c8c5fdeff36a155b0c18d0cdada10733e2be refs/remotes/origin/release-v0.179.0
+cfdf899014f9f5b4c88f270319eda66f8f969aaa refs/remotes/origin/release-v0.179.1
+d482f8aed78e2882a78d7164c000554ca0e9be03 refs/remotes/origin/release-v0.179.2
+e52547dd85d06eb72198048c2e3c6cac105da4fb refs/remotes/origin/release-v0.179.3
+ec7be3baac0e5fdb624f12c66993864657cc37db refs/remotes/origin/release-v0.179.4
+b27acd9b06fcc8ea0765cd09188f9735da1c633c refs/remotes/origin/release-v0.180.0
+b69d0243c55943880ff28df46bdf53290e6646d5 refs/remotes/origin/release-v0.180.1
+5a122802a05c91edd22a5d8e4599e82309552069 refs/remotes/origin/release-v0.180.2
+98320b33083ec43496c27c5c951e6a14c8f34ca9 refs/remotes/origin/release-v0.181.0
+842e4992b8ed6d34c13b1b208d52f295ba9f3b8b refs/remotes/origin/release-v0.182.0
+2bf9d66a577957130175d77669f87e5eadaf7441 refs/remotes/origin/release-v0.183.0
+31d95dfd26b00646b3cf1ba8f003132a57ad13f4 refs/remotes/origin/release-v0.183.1
+97a59ddeba2ca538ed7b991b3525627cc5f0fecf refs/remotes/origin/release-v0.184.0
+ec7ba2a4c9b5cf967a6aaba6539359035c90afdb refs/remotes/origin/release-v0.3.0
+af52d790055fc73d3e4746befa26beff7877cecf refs/remotes/origin/sd-helm
+bf000b015c499933bc3f969eeb5e899e4606d211 refs/remotes/origin/sd/add-wire-truefoundry
+fa27630c5002e55a494577567b43641908892d8c refs/remotes/origin/sd/error-messages
+99abea070531cf9f4ea3769dee3baedd2577f76f refs/remotes/origin/sd/gap-btw-subagent-toolcalls
+676b69f8fe88e1d5f3b53ae20277110ba37e8cb7 refs/remotes/origin/sd/hotfix-image-jobs
+87cb4ddbacbafdcf11110ac18202c03a39401c8a refs/remotes/origin/sd/hotfix-image-jobs-main
+da4cf0f8c9bc4e252f3bd2e58f745069d87a1b4f refs/remotes/origin/sd/minor-error-fix
+1a91ffac122dea3180acdd2d77e1f1dba7792314 refs/remotes/origin/sd/model-message-completed-at
+16f6aac76930eabe8d267fc68215ebebd7783355 refs/remotes/origin/sd/retry-failed-network-call
+12b9317d51c4b105dacdf11ea1cec6677d81d54a refs/remotes/origin/sd/tenant-settings-env
+095ddcc18308f88e10362ceb665df08a008a852b refs/remotes/origin/sr-AGE-2191
+708cc7cdeab55ab2bf213bfe08e561799041098a refs/remotes/origin/sr-AGE-2198
+9f88cdc49f4708d617fa52fdf667fe470b34c741 refs/remotes/origin/sr-AGE-2264
+a9145a1ca816e4f60408801e741d0549f56e663e refs/remotes/origin/sr-e2e-tests-setup
+ec025c2ec2763a54acca2be6f900ea4a813782b3 refs/remotes/origin/temp/age-2562-keep-split-session-turns
+c50dbd58f6706ee895947c9d1eda7a855008947f refs/remotes/origin/test-docs
+03c9748373cbc3bb0f196a0c91dddf2bc83a30cc refs/remotes/origin/tfg/access-logs
+040aeb87f2fa5c8d73a96df3d3a860713950cb15 refs/remotes/origin/tfg/schedule-index
+2c823a13bc51a7d03a69b7414f79a56085ed9060 refs/remotes/origin/tfy/env-bug-fixes
+0398dcadd9a13eb269b0a864c0fe0bfc9920fcce refs/remotes/origin/tfy/metadata-env
+b7beca9c0b3839505ac0b0e85d870f983115e0f7 refs/remotes/origin/tfy/schedule-notes
+9e262620c59c7840a0baff2df491416e57c65123 refs/remotes/origin/ui/layout-parity-withrouter-default
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.177.0
+fde4d4a0661ffe98cc70aaceffb237e2c061dab8 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.177.0-rc.1
+b9429a0be2906ed799dddfcf82c67cd06d9504ff refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.177.0-rc.2
+fc99f4e7eb49e7410faff9393cfcb10f7f3d40a4 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.177.0-rc.3
+805710918751e16622f2aaa9e88bf8fcab71c36e refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.177.0-rc.4
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.178.0
+8c24138f77cfe52eab82359c056349f86d3aecc5 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.178.0-rc.1
+70605ef1423619477cd7602897ebe384de526b57 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.178.0-rc.2
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.179.0
+8cc845358d9a84df0a1965aaebf308320379993c refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.179.0-rc.1
+f0aa52d4c6f4e7d53aa4911787acc7ab61129d68 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.179.0-rc.2
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.180.0
+8d4cc1c21590b354237da6cabc676f351ee504cd refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.180.0-rc.1
+5d9b938ccadf248fbb03a97056e312e768baa792 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.180.0-rc.2
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.181.0
+012f8fc4a750231bb9feb79fccb43a3a90971b67 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.181.0-rc.1
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.182.0
+ee31bcd121f1b30aa319091f5486e28bdc9b75aa refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.182.0-rc.1
+ae7c70530786abbf53b044ab9978b28a263c202a refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.182.0-rc.2
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.183.0
+f2ead70fda4d812706b6ee479de5fb60a4d71ec3 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.183.0-rc.1
+61872ac25e30f5d7b039d8bb4f034af8d470a3e1 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.183.0-rc.2
+379d26acdcd61035161aab743ddf492051353ebc refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.184.0-rc.1
+ebbf6c0a9046b2790ca6295d7579ceb39b4c598b refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.2.0
+346221b5821b0b1be9e4c9117b8cbf4b1a8648ee refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.2.0-rc.0
+75e877fcc5337c4856aea77f9a8b399488503ae9 refs/tags/@truefoundry/trueforge-assistant-ui-runtime@0.2.1
+7379d690845bf34ab325fa961827a77419108d4c refs/tags/@truefoundry/trueforge-core@0.1.0
+f23c1ca2963017340ff7aea3c6f7c5421f528187 refs/tags/@truefoundry/trueforge-core@0.1.0-rc.0
+^62a8a54100910a60ec2103471e36646e8cd1fd91
+d97f08618e458ce04f6aea572676086eddf0a8c8 refs/tags/@truefoundry/trueforge-core@0.1.1
+9e90320f186dc8c89c29c518c2dcb9d2356ad5ae refs/tags/@truefoundry/trueforge-core@0.1.2
+141dd1fcd14dba620c2f1b5c12c4bf6d9dab2f97 refs/tags/@truefoundry/trueforge-core@0.1.3
+fba492fafd853e897793e8f5f6c5cbd1174e3676 refs/tags/@truefoundry/trueforge-core@0.1.4
+74f2e4345a7e38ffc13f5328cae187b7011e5456 refs/tags/@truefoundry/trueforge-core@0.1.4-rc.0
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/@truefoundry/trueforge-core@0.177.0
+fde4d4a0661ffe98cc70aaceffb237e2c061dab8 refs/tags/@truefoundry/trueforge-core@0.177.0-rc.1
+b9429a0be2906ed799dddfcf82c67cd06d9504ff refs/tags/@truefoundry/trueforge-core@0.177.0-rc.2
+fc99f4e7eb49e7410faff9393cfcb10f7f3d40a4 refs/tags/@truefoundry/trueforge-core@0.177.0-rc.3
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/@truefoundry/trueforge-core@0.178.0
+8c24138f77cfe52eab82359c056349f86d3aecc5 refs/tags/@truefoundry/trueforge-core@0.178.0-rc.1
+06884d0586cb37840a29b7fcf8b3ff01993b31a2 refs/tags/@truefoundry/trueforge-core@0.178.0-rc.2
+d77c9796554f1554be5880dacc5cd05d03962ccb refs/tags/@truefoundry/trueforge-core@0.178.1
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/@truefoundry/trueforge-core@0.179.0
+8cc845358d9a84df0a1965aaebf308320379993c refs/tags/@truefoundry/trueforge-core@0.179.0-rc.1
+f0aa52d4c6f4e7d53aa4911787acc7ab61129d68 refs/tags/@truefoundry/trueforge-core@0.179.0-rc.2
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/@truefoundry/trueforge-core@0.180.0
+8d4cc1c21590b354237da6cabc676f351ee504cd refs/tags/@truefoundry/trueforge-core@0.180.0-rc.1
+0a1606da52932dfcb413c8cb9602ef0f2effba8e refs/tags/@truefoundry/trueforge-core@0.180.0-rc.2
+5fd9cca4ac229538e86ee625201487cbebafb151 refs/tags/@truefoundry/trueforge-core@0.180.0-rc.3
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/@truefoundry/trueforge-core@0.181.0
+012f8fc4a750231bb9feb79fccb43a3a90971b67 refs/tags/@truefoundry/trueforge-core@0.181.0-rc.1
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/@truefoundry/trueforge-core@0.182.0
+ee31bcd121f1b30aa319091f5486e28bdc9b75aa refs/tags/@truefoundry/trueforge-core@0.182.0-rc.1
+ae7c70530786abbf53b044ab9978b28a263c202a refs/tags/@truefoundry/trueforge-core@0.182.0-rc.2
+e87e9f21a3a7e67d712ac22025db7c66118a6111 refs/tags/@truefoundry/trueforge-core@0.182.0-rc.3
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/@truefoundry/trueforge-core@0.183.0
+f2ead70fda4d812706b6ee479de5fb60a4d71ec3 refs/tags/@truefoundry/trueforge-core@0.183.0-rc.1
+d01160a9e218a04a6c1fc6d4a02801c1569a2b11 refs/tags/@truefoundry/trueforge-core@0.183.1
+379d26acdcd61035161aab743ddf492051353ebc refs/tags/@truefoundry/trueforge-core@0.184.0-rc.1
+8b1d98e4d06a6214d5ea2e977c8d9dae46006c62 refs/tags/@truefoundry/trueforge-core@0.2.0
+8e9f92d7ea0e13af19277e167ac7b9271a0ab333 refs/tags/@truefoundry/trueforge-core@0.2.0-rc.0
+a5f8116d0190e6b6a71933e4d6e7ef59bc7465fe refs/tags/@truefoundry/trueforge-core@0.2.0-rc.1
+5632412a89d8591630f87e2976b395d2ab5e96d8 refs/tags/@truefoundry/trueforge-core@0.2.0-rc.2
+15672664284ce8d1998fc8164938b2120c3a97c6 refs/tags/@truefoundry/trueforge-core@0.2.0-rc.3
+480e485d985976bab952dfaac244226c7a49a8cc refs/tags/@truefoundry/trueforge-core@0.2.0-rc.4
+1525f948b379ef07ea70350e6c830e449874e6c7 refs/tags/@truefoundry/trueforge-core@0.2.0-rc.5
+208ecbaa99cdec62970284958552a3aa27501be7 refs/tags/@truefoundry/trueforge-core@0.2.0-rc.6
+de68a1643f4aafbefc80c6cbfe4bfda361459b29 refs/tags/@truefoundry/trueforge-core@0.2.1
+ebbf6c0a9046b2790ca6295d7579ceb39b4c598b refs/tags/@truefoundry/trueforge-core@0.3.0
+346221b5821b0b1be9e4c9117b8cbf4b1a8648ee refs/tags/@truefoundry/trueforge-core@0.3.0-rc.0
+7379d690845bf34ab325fa961827a77419108d4c refs/tags/@truefoundry/trueforge-sdk@0.1.0
+75a66b4784c21a1b49611606aba03d92fb1de872 refs/tags/@truefoundry/trueforge-sdk@0.1.0-rc.0
+^62a8a54100910a60ec2103471e36646e8cd1fd91
+6612a6ad5f2a0769fc1e347e51e8a08e9911e1ec refs/tags/@truefoundry/trueforge-sdk@0.1.0-rc.1
+d97f08618e458ce04f6aea572676086eddf0a8c8 refs/tags/@truefoundry/trueforge-sdk@0.1.1
+141dd1fcd14dba620c2f1b5c12c4bf6d9dab2f97 refs/tags/@truefoundry/trueforge-sdk@0.1.2
+fba492fafd853e897793e8f5f6c5cbd1174e3676 refs/tags/@truefoundry/trueforge-sdk@0.1.3
+74f2e4345a7e38ffc13f5328cae187b7011e5456 refs/tags/@truefoundry/trueforge-sdk@0.1.3-rc.0
+8e9f92d7ea0e13af19277e167ac7b9271a0ab333 refs/tags/@truefoundry/trueforge-sdk@0.1.4-rc.0
+a5f8116d0190e6b6a71933e4d6e7ef59bc7465fe refs/tags/@truefoundry/trueforge-sdk@0.1.4-rc.1
+5632412a89d8591630f87e2976b395d2ab5e96d8 refs/tags/@truefoundry/trueforge-sdk@0.1.4-rc.2
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/@truefoundry/trueforge-sdk@0.177.0
+fde4d4a0661ffe98cc70aaceffb237e2c061dab8 refs/tags/@truefoundry/trueforge-sdk@0.177.0-rc.1
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/@truefoundry/trueforge-sdk@0.178.0
+8c24138f77cfe52eab82359c056349f86d3aecc5 refs/tags/@truefoundry/trueforge-sdk@0.178.0-rc.1
+70605ef1423619477cd7602897ebe384de526b57 refs/tags/@truefoundry/trueforge-sdk@0.178.0-rc.2
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/@truefoundry/trueforge-sdk@0.179.0
+8cc845358d9a84df0a1965aaebf308320379993c refs/tags/@truefoundry/trueforge-sdk@0.179.0-rc.1
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/@truefoundry/trueforge-sdk@0.180.0
+8d4cc1c21590b354237da6cabc676f351ee504cd refs/tags/@truefoundry/trueforge-sdk@0.180.0-rc.0
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/@truefoundry/trueforge-sdk@0.181.0
+012f8fc4a750231bb9feb79fccb43a3a90971b67 refs/tags/@truefoundry/trueforge-sdk@0.181.0-rc.1
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/@truefoundry/trueforge-sdk@0.182.0
+ee31bcd121f1b30aa319091f5486e28bdc9b75aa refs/tags/@truefoundry/trueforge-sdk@0.182.0-rc.1
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/@truefoundry/trueforge-sdk@0.183.0
+f2ead70fda4d812706b6ee479de5fb60a4d71ec3 refs/tags/@truefoundry/trueforge-sdk@0.183.0-rc.0
+61872ac25e30f5d7b039d8bb4f034af8d470a3e1 refs/tags/@truefoundry/trueforge-sdk@0.183.0-rc.1
+379d26acdcd61035161aab743ddf492051353ebc refs/tags/@truefoundry/trueforge-sdk@0.184.0-rc.1
+8b1d98e4d06a6214d5ea2e977c8d9dae46006c62 refs/tags/@truefoundry/trueforge-sdk@0.2.0
+15672664284ce8d1998fc8164938b2120c3a97c6 refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.3
+d4e84ac83671ff96cf850abc6488bd1c507538b1 refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.4
+480e485d985976bab952dfaac244226c7a49a8cc refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.5
+f54704c0b74f1d6782db23282f7f68f493d7dc7e refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.6
+3632680fb41d32460845305975f02a43f4f2de42 refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.7
+7fc322f339170d0056906fab5cc6e7e5c250f995 refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.8
+208ecbaa99cdec62970284958552a3aa27501be7 refs/tags/@truefoundry/trueforge-sdk@0.2.0-rc.9
+ebbf6c0a9046b2790ca6295d7579ceb39b4c598b refs/tags/@truefoundry/trueforge-sdk@0.2.1
+346221b5821b0b1be9e4c9117b8cbf4b1a8648ee refs/tags/@truefoundry/trueforge-sdk@0.2.1-rc.0
+7379d690845bf34ab325fa961827a77419108d4c refs/tags/@truefoundry/trueforge-ui@0.1.0
+299316e501820ecdf110a121e6e3af0907ac9476 refs/tags/@truefoundry/trueforge-ui@0.1.0-rc.0
+^62a8a54100910a60ec2103471e36646e8cd1fd91
+6612a6ad5f2a0769fc1e347e51e8a08e9911e1ec refs/tags/@truefoundry/trueforge-ui@0.1.0-rc.1
+678150fa90260abf5d41271a71c934e950885660 refs/tags/@truefoundry/trueforge-ui@0.1.0-rc.2
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/@truefoundry/trueforge-ui@0.177.0
+fde4d4a0661ffe98cc70aaceffb237e2c061dab8 refs/tags/@truefoundry/trueforge-ui@0.177.0-rc.1
+968b8836b212d35f99f0eafeb01e3f3217d92813 refs/tags/@truefoundry/trueforge-ui@0.177.0-rc.2
+b9429a0be2906ed799dddfcf82c67cd06d9504ff refs/tags/@truefoundry/trueforge-ui@0.177.0-rc.3
+fc99f4e7eb49e7410faff9393cfcb10f7f3d40a4 refs/tags/@truefoundry/trueforge-ui@0.177.0-rc.4
+805710918751e16622f2aaa9e88bf8fcab71c36e refs/tags/@truefoundry/trueforge-ui@0.177.0-rc.5
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/@truefoundry/trueforge-ui@0.178.0
+8c24138f77cfe52eab82359c056349f86d3aecc5 refs/tags/@truefoundry/trueforge-ui@0.178.0-rc.1
+85787965c0e28bf691a3df651438251d32549c9b refs/tags/@truefoundry/trueforge-ui@0.178.0-rc.2
+70605ef1423619477cd7602897ebe384de526b57 refs/tags/@truefoundry/trueforge-ui@0.178.0-rc.3
+dcb8cc8a3603f628a72724950466f6a60b38df7d refs/tags/@truefoundry/trueforge-ui@0.178.1
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/@truefoundry/trueforge-ui@0.179.0
+8cc845358d9a84df0a1965aaebf308320379993c refs/tags/@truefoundry/trueforge-ui@0.179.0-rc.1
+f0aa52d4c6f4e7d53aa4911787acc7ab61129d68 refs/tags/@truefoundry/trueforge-ui@0.179.0-rc.2
+a2f28770003a771762eb10e31c582e6cbdf33ab1 refs/tags/@truefoundry/trueforge-ui@0.179.0-rc.3
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/@truefoundry/trueforge-ui@0.180.0
+8d4cc1c21590b354237da6cabc676f351ee504cd refs/tags/@truefoundry/trueforge-ui@0.180.0-rc.1
+5d9b938ccadf248fbb03a97056e312e768baa792 refs/tags/@truefoundry/trueforge-ui@0.180.0-rc.2
+58d715933e1cda8894c52a1963d1cad77adcb767 refs/tags/@truefoundry/trueforge-ui@0.180.0-rc.3
+0a1606da52932dfcb413c8cb9602ef0f2effba8e refs/tags/@truefoundry/trueforge-ui@0.180.0-rc.4
+f10e3b8999aca147b72f0e6a51c797f1af6ce590 refs/tags/@truefoundry/trueforge-ui@0.180.0-rc.5
+204951dd03b7a6c3090ac3d7795f8f8b87bf6bae refs/tags/@truefoundry/trueforge-ui@0.180.1
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/@truefoundry/trueforge-ui@0.181.0
+012f8fc4a750231bb9feb79fccb43a3a90971b67 refs/tags/@truefoundry/trueforge-ui@0.181.0-rc.1
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/@truefoundry/trueforge-ui@0.182.0
+ee31bcd121f1b30aa319091f5486e28bdc9b75aa refs/tags/@truefoundry/trueforge-ui@0.182.0-rc.1
+ae7c70530786abbf53b044ab9978b28a263c202a refs/tags/@truefoundry/trueforge-ui@0.182.0-rc.2
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/@truefoundry/trueforge-ui@0.183.0
+f2ead70fda4d812706b6ee479de5fb60a4d71ec3 refs/tags/@truefoundry/trueforge-ui@0.183.0-rc.1
+5d9f7e1be8700220087c2a303281b5da4faeb1e6 refs/tags/@truefoundry/trueforge-ui@0.183.0-rc.2
+b51ed354c9c9bed058d21029d4bec0fd5834fa36 refs/tags/@truefoundry/trueforge-ui@0.183.0-rc.3
+61872ac25e30f5d7b039d8bb4f034af8d470a3e1 refs/tags/@truefoundry/trueforge-ui@0.183.0-rc.4
+379d26acdcd61035161aab743ddf492051353ebc refs/tags/@truefoundry/trueforge-ui@0.184.0-rc.1
+d97f08618e458ce04f6aea572676086eddf0a8c8 refs/tags/@truefoundry/trueforge-ui@0.2.0
+9e90320f186dc8c89c29c518c2dcb9d2356ad5ae refs/tags/@truefoundry/trueforge-ui@0.2.1
+141dd1fcd14dba620c2f1b5c12c4bf6d9dab2f97 refs/tags/@truefoundry/trueforge-ui@0.2.2
+fba492fafd853e897793e8f5f6c5cbd1174e3676 refs/tags/@truefoundry/trueforge-ui@0.2.3
+74f2e4345a7e38ffc13f5328cae187b7011e5456 refs/tags/@truefoundry/trueforge-ui@0.2.3-rc.0
+cc1e831635aa2071235f647333cefbd83922675a refs/tags/@truefoundry/trueforge-ui@0.2.4
+8b1d98e4d06a6214d5ea2e977c8d9dae46006c62 refs/tags/@truefoundry/trueforge-ui@0.3.0
+8e9f92d7ea0e13af19277e167ac7b9271a0ab333 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.0
+a5f8116d0190e6b6a71933e4d6e7ef59bc7465fe refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.1
+1525f948b379ef07ea70350e6c830e449874e6c7 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.10
+208ecbaa99cdec62970284958552a3aa27501be7 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.11
+5632412a89d8591630f87e2976b395d2ab5e96d8 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.2
+15672664284ce8d1998fc8164938b2120c3a97c6 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.3
+d4e84ac83671ff96cf850abc6488bd1c507538b1 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.4
+380bdde0379164b5e88c02f16c8aa0caef981a33 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.5
+480e485d985976bab952dfaac244226c7a49a8cc refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.6
+f54704c0b74f1d6782db23282f7f68f493d7dc7e refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.7
+3632680fb41d32460845305975f02a43f4f2de42 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.8
+7fc322f339170d0056906fab5cc6e7e5c250f995 refs/tags/@truefoundry/trueforge-ui@0.3.0-rc.9
+de68a1643f4aafbefc80c6cbfe4bfda361459b29 refs/tags/@truefoundry/trueforge-ui@0.3.1
+ebbf6c0a9046b2790ca6295d7579ceb39b4c598b refs/tags/@truefoundry/trueforge-ui@0.4.0
+346221b5821b0b1be9e4c9117b8cbf4b1a8648ee refs/tags/@truefoundry/trueforge-ui@0.4.0-rc.0
+75e877fcc5337c4856aea77f9a8b399488503ae9 refs/tags/@truefoundry/trueforge-ui@0.4.1
+7379d690845bf34ab325fa961827a77419108d4c refs/tags/@truefoundry/trueforge@0.1.0
+1533eb418945de4e012c039021002af8918838d7 refs/tags/@truefoundry/trueforge@0.1.0-rc.0
+^62a8a54100910a60ec2103471e36646e8cd1fd91
+6612a6ad5f2a0769fc1e347e51e8a08e9911e1ec refs/tags/@truefoundry/trueforge@0.1.0-rc.1
+d97f08618e458ce04f6aea572676086eddf0a8c8 refs/tags/@truefoundry/trueforge@0.1.1
+9e90320f186dc8c89c29c518c2dcb9d2356ad5ae refs/tags/@truefoundry/trueforge@0.1.2
+141dd1fcd14dba620c2f1b5c12c4bf6d9dab2f97 refs/tags/@truefoundry/trueforge@0.1.3
+fba492fafd853e897793e8f5f6c5cbd1174e3676 refs/tags/@truefoundry/trueforge@0.1.4
+74f2e4345a7e38ffc13f5328cae187b7011e5456 refs/tags/@truefoundry/trueforge@0.1.4-rc.0
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/@truefoundry/trueforge@0.177.0
+fde4d4a0661ffe98cc70aaceffb237e2c061dab8 refs/tags/@truefoundry/trueforge@0.177.0-rc.1
+968b8836b212d35f99f0eafeb01e3f3217d92813 refs/tags/@truefoundry/trueforge@0.177.0-rc.2
+b9429a0be2906ed799dddfcf82c67cd06d9504ff refs/tags/@truefoundry/trueforge@0.177.0-rc.3
+fc99f4e7eb49e7410faff9393cfcb10f7f3d40a4 refs/tags/@truefoundry/trueforge@0.177.0-rc.4
+ed69e5370c4ad25e5fe0140a4afa703a6b0cc836 refs/tags/@truefoundry/trueforge@0.177.1
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/@truefoundry/trueforge@0.178.0
+8c24138f77cfe52eab82359c056349f86d3aecc5 refs/tags/@truefoundry/trueforge@0.178.0-rc.1
+85787965c0e28bf691a3df651438251d32549c9b refs/tags/@truefoundry/trueforge@0.178.0-rc.2
+70605ef1423619477cd7602897ebe384de526b57 refs/tags/@truefoundry/trueforge@0.178.0-rc.3
+06884d0586cb37840a29b7fcf8b3ff01993b31a2 refs/tags/@truefoundry/trueforge@0.178.0-rc.4
+d77c9796554f1554be5880dacc5cd05d03962ccb refs/tags/@truefoundry/trueforge@0.178.1
+dcb8cc8a3603f628a72724950466f6a60b38df7d refs/tags/@truefoundry/trueforge@0.178.2
+19a741621e3499aa8d2bcfe01bede05e5bb2a340 refs/tags/@truefoundry/trueforge@0.178.3
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/@truefoundry/trueforge@0.179.0
+8cc845358d9a84df0a1965aaebf308320379993c refs/tags/@truefoundry/trueforge@0.179.0-rc.1
+f0aa52d4c6f4e7d53aa4911787acc7ab61129d68 refs/tags/@truefoundry/trueforge@0.179.0-rc.2
+a2f28770003a771762eb10e31c582e6cbdf33ab1 refs/tags/@truefoundry/trueforge@0.179.0-rc.3
+217194ba56ac86fe301242d117888080fb88fb2e refs/tags/@truefoundry/trueforge@0.179.1
+198a2ead7bcc32b00aef75d22eea6fa1569d1734 refs/tags/@truefoundry/trueforge@0.179.2
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/@truefoundry/trueforge@0.180.0
+8d4cc1c21590b354237da6cabc676f351ee504cd refs/tags/@truefoundry/trueforge@0.180.0-rc.1
+0a1606da52932dfcb413c8cb9602ef0f2effba8e refs/tags/@truefoundry/trueforge@0.180.0-rc.2
+f10e3b8999aca147b72f0e6a51c797f1af6ce590 refs/tags/@truefoundry/trueforge@0.180.0-rc.3
+5fd9cca4ac229538e86ee625201487cbebafb151 refs/tags/@truefoundry/trueforge@0.180.0-rc.4
+204951dd03b7a6c3090ac3d7795f8f8b87bf6bae refs/tags/@truefoundry/trueforge@0.180.1
+70ae529522eaa91d7e3c9c42b6c2b8c183f565ce refs/tags/@truefoundry/trueforge@0.180.2
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/@truefoundry/trueforge@0.181.0
+012f8fc4a750231bb9feb79fccb43a3a90971b67 refs/tags/@truefoundry/trueforge@0.181.0-rc.1
+8e2563ecb18dd3e5f52c0d72ee64f7e29ba91b49 refs/tags/@truefoundry/trueforge@0.181.0-rc.2
+6f36cdd699f5e410c38d8f9f4176dc7b09ef6833 refs/tags/@truefoundry/trueforge@0.181.0-rc.3
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/@truefoundry/trueforge@0.182.0
+ee31bcd121f1b30aa319091f5486e28bdc9b75aa refs/tags/@truefoundry/trueforge@0.182.0-rc.1
+ae7c70530786abbf53b044ab9978b28a263c202a refs/tags/@truefoundry/trueforge@0.182.0-rc.2
+8d3413a41a85a5fd0f319b8578990c0af35934c5 refs/tags/@truefoundry/trueforge@0.182.0-rc.3
+e87e9f21a3a7e67d712ac22025db7c66118a6111 refs/tags/@truefoundry/trueforge@0.182.0-rc.4
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/@truefoundry/trueforge@0.183.0
+f2ead70fda4d812706b6ee479de5fb60a4d71ec3 refs/tags/@truefoundry/trueforge@0.183.0-rc.1
+5d9f7e1be8700220087c2a303281b5da4faeb1e6 refs/tags/@truefoundry/trueforge@0.183.0-rc.2
+61872ac25e30f5d7b039d8bb4f034af8d470a3e1 refs/tags/@truefoundry/trueforge@0.183.0-rc.3
+d01160a9e218a04a6c1fc6d4a02801c1569a2b11 refs/tags/@truefoundry/trueforge@0.183.1
+379d26acdcd61035161aab743ddf492051353ebc refs/tags/@truefoundry/trueforge@0.184.0-rc.1
+8b1d98e4d06a6214d5ea2e977c8d9dae46006c62 refs/tags/@truefoundry/trueforge@0.2.0
+8e9f92d7ea0e13af19277e167ac7b9271a0ab333 refs/tags/@truefoundry/trueforge@0.2.0-rc.0
+a5f8116d0190e6b6a71933e4d6e7ef59bc7465fe refs/tags/@truefoundry/trueforge@0.2.0-rc.1
+3632680fb41d32460845305975f02a43f4f2de42 refs/tags/@truefoundry/trueforge@0.2.0-rc.10
+7fc322f339170d0056906fab5cc6e7e5c250f995 refs/tags/@truefoundry/trueforge@0.2.0-rc.11
+1525f948b379ef07ea70350e6c830e449874e6c7 refs/tags/@truefoundry/trueforge@0.2.0-rc.12
+208ecbaa99cdec62970284958552a3aa27501be7 refs/tags/@truefoundry/trueforge@0.2.0-rc.13
+e1ebeda901c53aeb287511ec17721c8d9c9409cf refs/tags/@truefoundry/trueforge@0.2.0-rc.14
+5632412a89d8591630f87e2976b395d2ab5e96d8 refs/tags/@truefoundry/trueforge@0.2.0-rc.2
+15672664284ce8d1998fc8164938b2120c3a97c6 refs/tags/@truefoundry/trueforge@0.2.0-rc.3
+d4e84ac83671ff96cf850abc6488bd1c507538b1 refs/tags/@truefoundry/trueforge@0.2.0-rc.4
+380bdde0379164b5e88c02f16c8aa0caef981a33 refs/tags/@truefoundry/trueforge@0.2.0-rc.5
+480e485d985976bab952dfaac244226c7a49a8cc refs/tags/@truefoundry/trueforge@0.2.0-rc.6
+887b07ca72567c3ba24208f6fad3d68afa827b97 refs/tags/@truefoundry/trueforge@0.2.0-rc.7
+dd5b98ebe3045387edcaf8c41a70a4c948ac488e refs/tags/@truefoundry/trueforge@0.2.0-rc.8
+f54704c0b74f1d6782db23282f7f68f493d7dc7e refs/tags/@truefoundry/trueforge@0.2.0-rc.9
+de68a1643f4aafbefc80c6cbfe4bfda361459b29 refs/tags/@truefoundry/trueforge@0.2.1
+ebbf6c0a9046b2790ca6295d7579ceb39b4c598b refs/tags/@truefoundry/trueforge@0.3.0
+346221b5821b0b1be9e4c9117b8cbf4b1a8648ee refs/tags/@truefoundry/trueforge@0.3.0-rc.0
+75e877fcc5337c4856aea77f9a8b399488503ae9 refs/tags/@truefoundry/trueforge@0.3.1
+15224d9fa532b2b4d64fcc206196cb21a4daadf6 refs/tags/@truefoundry/trueforge@0.9993.0
+eb87a490043a6b02cc6d8064fb80796dfae69ea7 refs/tags/charts/trueforge@0.1.0
+^900b44e112a4f5d41534c97a699fde5777153254
+31fe706d6098fd908e0bf8dae553468a3c3650ce refs/tags/charts/trueforge@0.1.1
+^6ee12165e4f3e03b26c8b69d13e2fdfc1375a786
+127b2fdffe0ebc11863b7d6f6b4b0433da99c924 refs/tags/charts/trueforge@0.1.2
+^ab5cd870bd0c24e35f0aa53fdb847763a04021ab
+007f0692ca20cdc97db05b9a75225c9c3ab711c1 refs/tags/charts/trueforge@0.1.3
+^56ddb9a23d2e7ee400a61b13d4bb8d3b12df2587
+a2039852d689cc6607506241ec848a212e7121e4 refs/tags/charts/trueforge@0.1.4
+^93c09f9e8cd98d6e3539559a78e8164fa96af546
+a413b28cbb3373e7bfc935deae895b53623233ab refs/tags/charts/trueforge@0.1.5
+^bd156190ac0c6ab865a5cc549535a14a805f06e8
+19f5e2b5a6e6f886c1ac6b5ac8834e87b69ea73c refs/tags/charts/trueforge@0.1.6-rc.0
+^e1e69ebb89cd582c58b21e11587b0a0aed115e92
+3b8d1c33abf45e79e6ec92142d5821de2eb724b8 refs/tags/charts/trueforge@0.1.6-rc.1
+^a518bb29e90288f44850e127b861cf8b3c04867d
+eff6050c5279e9d6e4bd3a48ae8e78acfe983382 refs/tags/charts/trueforge@0.1.6-rc.2
+^5e1daf9c80f59aa9e8daaa1e52e8ad988384a4f6
+92faed092217ab578146b7b5d7624ced2690f929 refs/tags/charts/trueforge@0.1.6-rc.3
+d599bdd6ec47fc2ae4e31c78d3d52978a9cc26e9 refs/tags/charts/trueforge@0.177.0
+^633edcc9d06f8754a3ac01057375406959e23630
+00ed8d9c37baa672fe7049e90bbe5f1d8100a1a9 refs/tags/charts/trueforge@0.177.0-rc.1
+^61972285b0208e352bb79975fd5de08e072f0498
+80a6b8c802ac325515eeea46c45e179e4875cdaa refs/tags/charts/trueforge@0.177.0-rc.2
+^bb9607e7bb06ce64246bdeb24c23b77967af0dbd
+c9871ff3eb48988b89c97cd541c0725f6acd01b0 refs/tags/charts/trueforge@0.177.0-rc.4
+^89255150ea47916a3d0bda2406c1b9e375e19a54
+479d250cf9f10e944e562462aa5774426dfc4b02 refs/tags/charts/trueforge@0.177.0-rc.7
+^3e0007804359b68de1761e072a57adcee25e99a4
+6c5e884b12c16fd648c94a3510df8b70b5d6f640 refs/tags/charts/trueforge@0.177.0-rc.8
+^b0e2b7a85b48a2e1761de42fca5d6d8ba37b16b6
+647f4b1abb23b4bf6c3a6b906366fbe46b45751b refs/tags/charts/trueforge@0.177.0-rc.9
+^b4da1b642f32bb17a5095e77347955856b50dfee
+d21c3d40e2bb86b14bb3e0cb665ed96f427bb66f refs/tags/charts/trueforge@0.177.1
+^7b67fedb6b6fdf8c4f6f171b29976326ef172b8a
+85a765d554fa09dbc06abdc664525a0c5abd4f99 refs/tags/charts/trueforge@0.178.0
+^14e6e7de8d1399ca1c7108b3b8e90b1bc7a02388
+4596a04ed3db7b38a020a52611c3dcf942aecff7 refs/tags/charts/trueforge@0.178.0-rc.1
+^50da320b76f7a0b68ffda889c5575a24e5d219ac
+c4386bbfc0e031aab92fce1491af6ae9a1f312b0 refs/tags/charts/trueforge@0.178.0-rc.4
+^dea97c898b2f7070a6069888f8046c1c472eec90
+a1e6bfdbbb5251a1aba93b50d14610d5cf9a6234 refs/tags/charts/trueforge@0.178.0-rc.5
+^24c9677cbfd7d954f1ea49fed5c2fc095e17838e
+94b3dd3eaf32e167989143477f1efdbeff326f54 refs/tags/charts/trueforge@0.178.0-rc.6
+^10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b
+9295ac3921304ec9b3013f8087c698a5a56b8a96 refs/tags/charts/trueforge@0.178.1
+^208dc5f475b7394104e1b5e8d1087439b7d8432a
+26be2a887131248f67f1e20f4b7d2c3af03ab369 refs/tags/charts/trueforge@0.178.2
+^1c95a683d9bd63e841df7ea994e24ca9c45e7a72
+e60e16fa7108d7bf3494e20b9ce5ee22f953fe58 refs/tags/charts/trueforge@0.178.3
+^fac3ce597a33cc7255f754dbe896712b7897a8fd
+27290529e78b4cbcc06cb65a332f6b96fc1ce669 refs/tags/charts/trueforge@0.179.0
+^23f1c8c5fdeff36a155b0c18d0cdada10733e2be
+b8df56ab65de3c26a4f7ec6db282512574aea19a refs/tags/charts/trueforge@0.179.0-rc.1
+^8537ce107363835efcf20de0d628de537e0d0cb4
+8a42f24f1c6a43010bf3ba08fb2cc9e06892eb0d refs/tags/charts/trueforge@0.179.0-rc.5
+^794de0eb82c40bd3978d8dd983ab7617a666cab9
+36f5bc6066c1b33bf92a55e9bbe9ad446705d506 refs/tags/charts/trueforge@0.179.0-rc.6
+^125280b6ee2d2b0d799f0f79ab05652efa2ea90d
+9e479f93b3df5f6165bca6642f5778f59ae283b4 refs/tags/charts/trueforge@0.179.0-rc.7
+^96fb529fa06864ad2e6fa46d35511cdec4a51b90
+61239bbd512e51f6451315ba0d2cc25a294a6757 refs/tags/charts/trueforge@0.179.1
+^cfdf899014f9f5b4c88f270319eda66f8f969aaa
+d746325355dd057bdcd5b5f06dccc47cb22e2cd5 refs/tags/charts/trueforge@0.179.2
+^d482f8aed78e2882a78d7164c000554ca0e9be03
+2f007665ff96dc2e59fe5b17e4756c5a0e020107 refs/tags/charts/trueforge@0.179.3
+^e52547dd85d06eb72198048c2e3c6cac105da4fb
+062c13f892db8cc6cf4ecd82cef44155322ef037 refs/tags/charts/trueforge@0.179.4
+^ec7be3baac0e5fdb624f12c66993864657cc37db
+4d9bbecca17988b02be1f8df5326a08d01c29f11 refs/tags/charts/trueforge@0.180.0
+^b27acd9b06fcc8ea0765cd09188f9735da1c633c
+b4235a863b4a7b508026ae5af25c7f3c31f8ea12 refs/tags/charts/trueforge@0.180.0-rc.1
+^db6bfd242e51efe0e8bde320541bafe78a71e41e
+be877328f49d1b5f12226cb055fc7491a2e92629 refs/tags/charts/trueforge@0.180.0-rc.2
+^30482d121a7486b7ef43aed12bf19af7573914bd
+ef24f5bdf829b14830e93055262ae73cd28be77d refs/tags/charts/trueforge@0.180.0-rc.3
+^39f0a941684fdc6028d0f0227f66e17b89fdb728
+8f9181dde6a77926cc0831f5daa34c5821a55c5b refs/tags/charts/trueforge@0.180.0-rc.4
+^86b4b6b6d2195bc0622b64691c7a0246fa721d4c
+ab151f0838f96438cfa0e648eac6d33ebf209e46 refs/tags/charts/trueforge@0.180.0-rc.5
+^8329d5d8ed337474b1e9217450ec035eeace2b54
+7be18592cef03767cf173d0238cecf28f58fd421 refs/tags/charts/trueforge@0.180.0-rc.7
+^d15fbad7d9c0296316cfdc3712a73039219c10ba
+3a5c0a132b4808b4176e8b8b91b71c4c963ed16b refs/tags/charts/trueforge@0.180.1
+^b69d0243c55943880ff28df46bdf53290e6646d5
+5f9a31ca8c19f30c8197ddcbbdcae19d40569134 refs/tags/charts/trueforge@0.180.2
+^5a122802a05c91edd22a5d8e4599e82309552069
+d871ee6f99a8f9d292b98fb322aaa8b4cc093416 refs/tags/charts/trueforge@0.181.0
+^98320b33083ec43496c27c5c951e6a14c8f34ca9
+e991da936dd7406c8ecfc1a1c33bd69952bebbef refs/tags/charts/trueforge@0.181.0-rc.2
+^7fc0dd3746068dbd82d86cb161699ce03f047587
+d51f04e69c046e1a834aec4ba3d76c2798de8f94 refs/tags/charts/trueforge@0.181.0-rc.3
+^aa15d514531b5450af88f87f26f16a80c8ea4d22
+c1f0892e7aca36b87a87459c5d55b6f7d8857cd5 refs/tags/charts/trueforge@0.181.0-rc.4
+^5e8adeff2b8684862666eb7fb72b8c9de5549da6
+2f4c8d530c1522b87227199ff46fb71390af17c0 refs/tags/charts/trueforge@0.182.0
+^842e4992b8ed6d34c13b1b208d52f295ba9f3b8b
+6e5ae205d72bb56ac17902a10d02fa616eb0619e refs/tags/charts/trueforge@0.182.0-rc.1
+^2f31d545d21a209ddd5e67478e210aca3d9201ea
+8b86c583a982d53a5f5babe0500b90d6c9a81cfc refs/tags/charts/trueforge@0.182.0-rc.2
+^8220799d41808fb68bb48490a5a941c3871a3405
+8b332ac3380f9561b5276adfefffc5a2557eb311 refs/tags/charts/trueforge@0.182.0-rc.3
+^831505fe6ea88e34e5951ef4e200fb047a81e255
+5ca4e3a9b0628bfecec7b9384153e79136afa9d8 refs/tags/charts/trueforge@0.182.0-rc.4
+^7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe
+fdb127781083452c7dc184d123ae981b166cb197 refs/tags/charts/trueforge@0.183.0
+^2bf9d66a577957130175d77669f87e5eadaf7441
+0dd24b0266df6955e842bb01029faad297a2bd24 refs/tags/charts/trueforge@0.183.0-rc.1
+^bac7af4e0a9af85c6fce7eaf31c939e2f233fed8
+6fdbcbc19e7f9cb791a99021cfd16eba11e77a7c refs/tags/charts/trueforge@0.183.0-rc.2
+^92db8d7375f4dec0b4eda7c5143791b189614345
+c4c8d3424d324812eaf5dca38c03c31def1a06a7 refs/tags/charts/trueforge@0.183.0-rc.3
+^d5579332d1eba6c632618fa289123bfecf519e9e
+ea233798ea007f75fd494b3122fdf0f9fa3a6b33 refs/tags/charts/trueforge@0.183.0-rc.4
+^de4cdff8d53b569e2f7789075a59ff91607d434e
+abef37dfb43b49b481c8e86185969a7def614d4e refs/tags/charts/trueforge@0.183.1
+^31d95dfd26b00646b3cf1ba8f003132a57ad13f4
+08da91b6b90cf18dfe6456e346d3f6ab9a17a11f refs/tags/charts/trueforge@0.184.0-rc.1
+^97a59ddeba2ca538ed7b991b3525627cc5f0fecf
+8e61a1280310a40e051b62694c39656abcafdf31 refs/tags/charts/trueforge@0.2.0
+^651c574e6ebf8bc2f4c39a00c7f749b4c22d9f88
+27228e0256e207128808483ff72f682210c106fa refs/tags/charts/trueforge@0.2.0-rc.0
+^2b79a7f3a3c217b4b3f52011601c861461936df7
+6b70a512179dee8685d0afb3496e3d684dc7d809 refs/tags/charts/trueforge@0.2.0-rc.1
+^8cf5b446337b5c0abe07bb800d06de68a3daa0f3
+c2522914399c04400f02352a9afcda5ef3495ee4 refs/tags/charts/trueforge@0.2.0-rc.10
+^c99ccb376c43c7dd3bd420dffc572c53a7645e5c
+294d6170a1d202bf4c5c15d1d75ab3c291f28c4d refs/tags/charts/trueforge@0.2.0-rc.12
+^affe4c3b07552a00211361418bce3ea6ab45857a
+0dcf9b676f75a20a9040dd64859bbfce412b10b6 refs/tags/charts/trueforge@0.2.0-rc.13
+^d81e3095bdd5769bdc4a712afb9a55005a159d9e
+c0062e6f356d3447e9a41fdfc6513e192cb52b1a refs/tags/charts/trueforge@0.2.0-rc.2
+^80e6563a78f5d4b96624267de6072bd12a569af1
+8d8b723273bf36be7c71cd015d38d90444f06cae refs/tags/charts/trueforge@0.2.0-rc.3
+45566d4f506ff2881081a85dd804155492287fc6 refs/tags/charts/trueforge@0.2.0-rc.4
+^bace650164157c8c6c45191d44725900fcd08aa3
+a110adb45ff15f9170dcbf4aac5c6684f0838486 refs/tags/charts/trueforge@0.2.0-rc.6
+^24d2bfa9def1f5f285d1c2ed7c2d5c42a644b1f7
+32ba19cfc0ac2e3e236476ab0b8f80501696f222 refs/tags/charts/trueforge@0.2.0-rc.9
+^c34a9fc94bbd8b8d0331ffbd83582516338d238a
+4d2a3e522d4761939868e82a147bd0037b9e81e2 refs/tags/charts/trueforge@0.2.1
+^d17c03ae28ed0a98612ff5183696a4bd147863f5
+d8de31c7c9ec80a54e950e1d66b5ccf7ecc26f7c refs/tags/charts/trueforge@0.2.2
+0f3f79073819a3479ae06ea91e70ff7d0d94ad08 refs/tags/charts/trueforge@0.2.3-rc.0
+^63d5e5912c0648dac07cd185287d52159a94d119
+979ec5c95d6442c174a9e31b1153a185aec40348 refs/tags/charts/trueforge@0.3.0
+^44c3f46ce1e9f0029641805b4f138e9569593a8a
+fabfe5c41f129e07401eab59453e3d0c98c4e0b2 refs/tags/charts/trueforge@0.3.1
+^97607670cce4f0dd0f141219745ee9104e772f15
+7f202fbc823d2fdd7d2376db754eb6aa06152c42 refs/tags/charts/trueforge@0.9992.0
+^d17db0b0b5f4ca7a39cca1b71dd9dc2c7485f7e1
+ce6fe54d9c22b5bd2b0ed07f7a0bdbda62648747 refs/tags/v0.1.1
+80432817b279479de2afee3c4b2afbafe24f29fc refs/tags/v0.1.10-rc.1
+9d8d6858232415be860e18780f5e6d41ce1f1e06 refs/tags/v0.1.2
+888bf74a0e59da47880ff1da5f5f1ae08e534eeb refs/tags/v0.1.3
+fa00af91a396fe6d6d0be0a6cfa528893c12742e refs/tags/v0.1.4
+74779c42c8f862b2573b8aff64746252164dff0e refs/tags/v0.1.5
+ad7479550d7fff9e99f431af27f799ec4938b6c0 refs/tags/v0.1.6
+c763cc38cd09ad2ce01217ab1f83318bd957ce7e refs/tags/v0.1.7
+10f94340bc6a670b19c98e4f80d0779553404872 refs/tags/v0.1.8
+ed1f28577daf5d8caa3e7acf3554505293978086 refs/tags/v0.1.9
+43b5dd87bc36b05f531bc905c551ad54bffd3fe5 refs/tags/v0.1.9-rc.2
+633edcc9d06f8754a3ac01057375406959e23630 refs/tags/v0.177.0
+61972285b0208e352bb79975fd5de08e072f0498 refs/tags/v0.177.0-rc.1
+bb9607e7bb06ce64246bdeb24c23b77967af0dbd refs/tags/v0.177.0-rc.2
+89255150ea47916a3d0bda2406c1b9e375e19a54 refs/tags/v0.177.0-rc.4
+3e0007804359b68de1761e072a57adcee25e99a4 refs/tags/v0.177.0-rc.7
+b0e2b7a85b48a2e1761de42fca5d6d8ba37b16b6 refs/tags/v0.177.0-rc.8
+b4da1b642f32bb17a5095e77347955856b50dfee refs/tags/v0.177.0-rc.9
+7b67fedb6b6fdf8c4f6f171b29976326ef172b8a refs/tags/v0.177.1
+14e6e7de8d1399ca1c7108b3b8e90b1bc7a02388 refs/tags/v0.178.0
+50da320b76f7a0b68ffda889c5575a24e5d219ac refs/tags/v0.178.0-rc.1
+dea97c898b2f7070a6069888f8046c1c472eec90 refs/tags/v0.178.0-rc.4
+24c9677cbfd7d954f1ea49fed5c2fc095e17838e refs/tags/v0.178.0-rc.5
+10b81131e2b57db6d670ca0b55a42cfc8b1c9f4b refs/tags/v0.178.0-rc.6
+208dc5f475b7394104e1b5e8d1087439b7d8432a refs/tags/v0.178.1
+1c95a683d9bd63e841df7ea994e24ca9c45e7a72 refs/tags/v0.178.2
+fac3ce597a33cc7255f754dbe896712b7897a8fd refs/tags/v0.178.3
+23f1c8c5fdeff36a155b0c18d0cdada10733e2be refs/tags/v0.179.0
+8537ce107363835efcf20de0d628de537e0d0cb4 refs/tags/v0.179.0-rc.1
+794de0eb82c40bd3978d8dd983ab7617a666cab9 refs/tags/v0.179.0-rc.5
+125280b6ee2d2b0d799f0f79ab05652efa2ea90d refs/tags/v0.179.0-rc.6
+96fb529fa06864ad2e6fa46d35511cdec4a51b90 refs/tags/v0.179.0-rc.7
+cfdf899014f9f5b4c88f270319eda66f8f969aaa refs/tags/v0.179.1
+d482f8aed78e2882a78d7164c000554ca0e9be03 refs/tags/v0.179.2
+e52547dd85d06eb72198048c2e3c6cac105da4fb refs/tags/v0.179.3
+ec7be3baac0e5fdb624f12c66993864657cc37db refs/tags/v0.179.4
+b27acd9b06fcc8ea0765cd09188f9735da1c633c refs/tags/v0.180.0
+db6bfd242e51efe0e8bde320541bafe78a71e41e refs/tags/v0.180.0-rc.1
+30482d121a7486b7ef43aed12bf19af7573914bd refs/tags/v0.180.0-rc.2
+39f0a941684fdc6028d0f0227f66e17b89fdb728 refs/tags/v0.180.0-rc.3
+86b4b6b6d2195bc0622b64691c7a0246fa721d4c refs/tags/v0.180.0-rc.4
+8329d5d8ed337474b1e9217450ec035eeace2b54 refs/tags/v0.180.0-rc.5
+d15fbad7d9c0296316cfdc3712a73039219c10ba refs/tags/v0.180.0-rc.7
+b69d0243c55943880ff28df46bdf53290e6646d5 refs/tags/v0.180.1
+5a122802a05c91edd22a5d8e4599e82309552069 refs/tags/v0.180.2
+98320b33083ec43496c27c5c951e6a14c8f34ca9 refs/tags/v0.181.0
+7fc0dd3746068dbd82d86cb161699ce03f047587 refs/tags/v0.181.0-rc.2
+aa15d514531b5450af88f87f26f16a80c8ea4d22 refs/tags/v0.181.0-rc.3
+5e8adeff2b8684862666eb7fb72b8c9de5549da6 refs/tags/v0.181.0-rc.4
+842e4992b8ed6d34c13b1b208d52f295ba9f3b8b refs/tags/v0.182.0
+2f31d545d21a209ddd5e67478e210aca3d9201ea refs/tags/v0.182.0-rc.1
+8220799d41808fb68bb48490a5a941c3871a3405 refs/tags/v0.182.0-rc.2
+831505fe6ea88e34e5951ef4e200fb047a81e255 refs/tags/v0.182.0-rc.3
+7d46f8ebf77363c1b8842d7f3aefd3d0d322fcbe refs/tags/v0.182.0-rc.4
+2bf9d66a577957130175d77669f87e5eadaf7441 refs/tags/v0.183.0
+bac7af4e0a9af85c6fce7eaf31c939e2f233fed8 refs/tags/v0.183.0-rc.1
+92db8d7375f4dec0b4eda7c5143791b189614345 refs/tags/v0.183.0-rc.2
+d5579332d1eba6c632618fa289123bfecf519e9e refs/tags/v0.183.0-rc.3
+de4cdff8d53b569e2f7789075a59ff91607d434e refs/tags/v0.183.0-rc.4
+31d95dfd26b00646b3cf1ba8f003132a57ad13f4 refs/tags/v0.183.1
+97a59ddeba2ca538ed7b991b3525627cc5f0fecf refs/tags/v0.184.0-rc.1

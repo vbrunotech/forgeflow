@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="forgeflow-hex-light" x1="64" y1="4" x2="64" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+  </defs>
+  <path d="M64 4L116 34V94L64 124L12 94V34L64 4Z" fill="url(#forgeflow-hex-light)"/>
+  <path d="M44 64H60M60 64L82 46M60 64L82 82" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="42" cy="64" r="11" fill="#FFFFFF"/>
+  <circle cx="84" cy="44" r="10" fill="#FFFFFF"/>
+  <circle cx="84" cy="84" r="10" fill="#C7D2FE"/>
+</svg>

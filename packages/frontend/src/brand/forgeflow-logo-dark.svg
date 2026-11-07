@@ -1,0 +1,16 @@
+<svg width="430" height="100" viewBox="0 0 430 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(0.78125)">
+  <defs>
+    <linearGradient id="forgeflow-hex-logo-dark" x1="64" y1="4" x2="64" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+  </defs>
+  <path d="M64 4L116 34V94L64 124L12 94V34L64 4Z" fill="url(#forgeflow-hex-logo-dark)"/>
+  <path d="M44 64H60M60 64L82 46M60 64L82 82" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="42" cy="64" r="11" fill="#FFFFFF"/>
+  <circle cx="84" cy="44" r="10" fill="#FFFFFF"/>
+  <circle cx="84" cy="84" r="10" fill="#C7D2FE"/>
+  </g>
+  <text x="118" y="70" font-family="Inter, 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="-1" fill="#F8FAFC">Forgeflow</text>
+</svg>

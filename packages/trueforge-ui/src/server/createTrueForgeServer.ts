@@ -1,0 +1,198 @@
+import type {
+  AgentBuilderCapabilitiesResponse,
+  AgentBuilderServer,
+  AgentChatServer,
+  AgentLibraryEntry,
+  AgentMetricsServer,
+  AgentSessionsServer,
+  AgentSkill,
+  AgentSpec,
+  CatalogServer,
+  ConfigurationServer,
+  ConnectorState,
+  ListResult,
+  ModelSelection,
+  PermissionsServer,
+  SandboxEnvironmentServer,
+  SaveAgentRequest,
+  SaveAgentResult,
+  ScheduleServer,
+  SearchAgentsParams,
+  SessionAccessServer,
+  WorkflowServer,
+} from './types.js';
+
+export type CreateTrueForgeServerOptions<
+  TSpec extends AgentSpec = AgentSpec,
+  TModel extends ModelSelection = ModelSelection,
+  TSkill extends AgentSkill = AgentSkill,
+  TMcp extends ConnectorState = ConnectorState,
+  TAgent extends AgentLibraryEntry = AgentLibraryEntry,
+  TSave extends SaveAgentResult = SaveAgentResult,
+  TCatalog extends CatalogServer = CatalogServer,
+  TCapabilities extends AgentBuilderCapabilitiesResponse = AgentBuilderCapabilitiesResponse,
+  TSessions extends AgentSessionsServer<TSpec> = AgentSessionsServer<TSpec>,
+  TMetrics extends AgentMetricsServer = AgentMetricsServer,
+  TSchedules extends ScheduleServer = ScheduleServer,
+  TSandboxEnvironments extends SandboxEnvironmentServer = SandboxEnvironmentServer,
+  TPermissions extends PermissionsServer = PermissionsServer,
+> = {
+  /** Chat port — e.g. from `@truefoundry/agent-server-adapter`. */
+  chatServer: AgentChatServer<TSpec>;
+  getCapabilities: () => Promise<TCapabilities>;
+  getModels: () => Promise<TModel[]>;
+  getSkills: () => Promise<TSkill[]>;
+  getMcp: () => Promise<TMcp[]>;
+  getMcpConnector?: AgentBuilderServer<TSpec, TModel, TSkill, TMcp, TAgent, TSave, TCapabilities>['getMcpConnector'];
+  getMcpTools?: AgentBuilderServer<TSpec, TModel, TSkill, TMcp, TAgent, TSave, TCapabilities>['getMcpTools'];
+  searchAgents: (req?: SearchAgentsParams) => Promise<ListResult<TAgent>>;
+  saveAgent: (req: SaveAgentRequest<TSpec>) => Promise<TSave>;
+  deleteAgent?: (req: { agentName: string }) => Promise<void>;
+  /** Settings catalog (models + connectors). Optional. */
+  catalog?: TCatalog;
+  /** Optional agent-detail port (Overview + Use In Code). */
+  sessions?: TSessions;
+  /** Optional aggregate metrics + chart port. */
+  metrics?: TMetrics;
+  /** Schedules listing + CRUD. Optional. */
+  schedules?: TSchedules;
+  /** Workflows listing, CRUD and runs. Optional; omit to hide the Hub. */
+  workflows?: WorkflowServer;
+  /** Sandbox environments listing + CRUD. Optional. */
+  sandboxEnvironments?: TSandboxEnvironments;
+  /** Per-resource grants. Omit to leave actions enabled. */
+  permissions?: TPermissions;
+  /** Tenant-wide switches (web search, …). Optional. */
+  configuration?: ConfigurationServer;
+  /** Session sharing (collaborator invite + list). Optional. */
+  sessionAccess?: SessionAccessServer;
+  /** Authenticated caller identity. Used for tenant-scoped share copy. */
+  getMe?: () => Promise<{ tenantId: string }>;
+};
+
+export type TrueForgeServer<
+  TSpec extends AgentSpec = AgentSpec,
+  TModel extends ModelSelection = ModelSelection,
+  TSkill extends AgentSkill = AgentSkill,
+  TMcp extends ConnectorState = ConnectorState,
+  TAgent extends AgentLibraryEntry = AgentLibraryEntry,
+  TSave extends SaveAgentResult = SaveAgentResult,
+  TCatalog extends CatalogServer = CatalogServer,
+  TCapabilities extends AgentBuilderCapabilitiesResponse = AgentBuilderCapabilitiesResponse,
+  TSessions extends AgentSessionsServer<TSpec> = AgentSessionsServer<TSpec>,
+  TMetrics extends AgentMetricsServer = AgentMetricsServer,
+  TSchedules extends ScheduleServer = ScheduleServer,
+  TSandboxEnvironments extends SandboxEnvironmentServer = SandboxEnvironmentServer,
+  TPermissions extends PermissionsServer = PermissionsServer,
+> = AgentChatServer<TSpec> &
+  AgentBuilderServer<TSpec, TModel, TSkill, TMcp, TAgent, TSave, TCapabilities> & {
+    catalog?: TCatalog;
+    sessions?: TSessions;
+    metrics?: TMetrics;
+    schedules?: TSchedules;
+    workflows?: WorkflowServer;
+    sandboxEnvironments?: TSandboxEnvironments;
+    permissions?: TPermissions;
+    configuration?: ConfigurationServer;
+    sessionAccess?: SessionAccessServer;
+    getMe?: () => Promise<{ tenantId: string }>;
+  };
+
+/**
+ * Composes an `AgentChatServer` with host-provided builder catalog callbacks
+ * and an optional settings `catalog`.
+ * Gateway wiring lives in the host (or `@truefoundry/agent-server-adapter`).
+ */
+export function createTrueForgeServer<
+  TSpec extends AgentSpec = AgentSpec,
+  TModel extends ModelSelection = ModelSelection,
+  TSkill extends AgentSkill = AgentSkill,
+  TMcp extends ConnectorState = ConnectorState,
+  TAgent extends AgentLibraryEntry = AgentLibraryEntry,
+  TSave extends SaveAgentResult = SaveAgentResult,
+  TCatalog extends CatalogServer = CatalogServer,
+  TCapabilities extends AgentBuilderCapabilitiesResponse = AgentBuilderCapabilitiesResponse,
+  TSessions extends AgentSessionsServer<TSpec> = AgentSessionsServer<TSpec>,
+  TMetrics extends AgentMetricsServer = AgentMetricsServer,
+  TSchedules extends ScheduleServer = ScheduleServer,
+  TSandboxEnvironments extends SandboxEnvironmentServer = SandboxEnvironmentServer,
+  TPermissions extends PermissionsServer = PermissionsServer,
+>(
+  opts: CreateTrueForgeServerOptions<
+    TSpec,
+    TModel,
+    TSkill,
+    TMcp,
+    TAgent,
+    TSave,
+    TCatalog,
+    TCapabilities,
+    TSessions,
+    TMetrics,
+    TSchedules,
+    TSandboxEnvironments,
+    TPermissions
+  >,
+): TrueForgeServer<
+  TSpec,
+  TModel,
+  TSkill,
+  TMcp,
+  TAgent,
+  TSave,
+  TCatalog,
+  TCapabilities,
+  TSessions,
+  TMetrics,
+  TSchedules,
+  TSandboxEnvironments,
+  TPermissions
+> {
+  const builder: AgentBuilderServer<TSpec, TModel, TSkill, TMcp, TAgent, TSave, TCapabilities> = {
+    getCapabilities: opts.getCapabilities,
+    getModels: opts.getModels,
+    getSkills: opts.getSkills,
+    getMcp: opts.getMcp,
+    ...(opts.getMcpConnector === undefined ? {} : { getMcpConnector: opts.getMcpConnector }),
+    ...(opts.getMcpTools === undefined ? {} : { getMcpTools: opts.getMcpTools }),
+    searchAgents: opts.searchAgents,
+    saveAgent: opts.saveAgent,
+    deleteAgent: async req => {
+      if (opts.deleteAgent) {
+        await opts.deleteAgent(req);
+        return;
+      }
+      throw new Error('deleteAgent is host-owned. Pass deleteAgent to createTrueForgeServer.');
+    },
+  };
+
+  const server: TrueForgeServer<
+    TSpec,
+    TModel,
+    TSkill,
+    TMcp,
+    TAgent,
+    TSave,
+    TCatalog,
+    TCapabilities,
+    TSessions,
+    TMetrics,
+    TSchedules,
+    TSandboxEnvironments,
+    TPermissions
+  > = {
+    ...opts.chatServer,
+    ...builder,
+    ...(opts.catalog != null ? { catalog: opts.catalog } : {}),
+    ...(opts.sessions != null ? { sessions: opts.sessions } : {}),
+    ...(opts.metrics != null ? { metrics: opts.metrics } : {}),
+    ...(opts.schedules != null ? { schedules: opts.schedules } : {}),
+    ...(opts.workflows != null ? { workflows: opts.workflows } : {}),
+    ...(opts.sandboxEnvironments != null ? { sandboxEnvironments: opts.sandboxEnvironments } : {}),
+    ...(opts.permissions != null ? { permissions: opts.permissions } : {}),
+    ...(opts.configuration != null ? { configuration: opts.configuration } : {}),
+    ...(opts.sessionAccess != null ? { sessionAccess: opts.sessionAccess } : {}),
+    ...(opts.getMe != null ? { getMe: opts.getMe } : {}),
+  };
+  return server;
+}

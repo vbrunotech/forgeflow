@@ -1,0 +1,66 @@
+---
+title: 'Home'
+sidebarTitle: 'Home'
+description: 'The entry point to the Agents and Workflows spaces, and help choosing the right one for a job.'
+---
+
+There are two good ways to automate work, and neither is always better. **Home**, at the top of the sidebar, is where you pick one: the **Agents** space for [agents](/create-agent/overview) and chats, or the **Workflows** space for [workflows](/workflows).
+
+## Workflow or agent?
+
+The difference is who decides the steps.
+
+|                 | Workflow                                  | Agent                                           |
+| --------------- | ----------------------------------------- | ----------------------------------------------- |
+| **Who decides** | You, in advance                           | A model, while it runs                          |
+| **Each run**    | Follows the same rules                    | Can take a different path                       |
+| **Model cost**  | None, unless you add an agent step        | Every run                                       |
+| **Timing**      | Mostly predictable                        | Varies with the task                            |
+| **Debugging**   | Read each step's input and output         | Read the transcript and reason about the choice |
+| **Input**       | Works best with a predictable format      | Handles messy, open-ended input                 |
+| **Good for**    | Syncing data, routing webhooks, schedules | Research, triaging free text, investigations    |
+
+**Start with a workflow when you can write the steps down.** It costs less, and when something breaks you can see exactly which step did it. Reach for an agent when the next step really depends on what the last one found.
+
+### Use both
+
+Most real processes are mostly predictable, with one part that needs judgment. You don't have to pick one approach for the whole thing: a workflow can have an [agent step](/workflows#agent) for just that part.
+
+For example, take a support inbox. The webhook, the routing, and the ticket creation never change, so those are workflow steps. Reading a free-text message and deciding what it's about needs judgment, so that one step is an agent.
+
+## Ask the advisor
+
+The top of Home has a chat with the **Forgeflow advisor**. Describe what you want to automate in your own words. It may ask one or two questions, then recommends an agent or a workflow, explains why, and drafts it:
+
+- For a workflow, it lays out the trigger and steps. **Open in workflow editor** opens that draft, unsaved, so you can fill in real URLs and check each step.
+- For an agent, it writes the instructions. **Open in agent builder** starts a new agent with them.
+
+Nothing is created until you review it and click **Save**. The advisor uses your default model, so it needs a model provider in Settings. Its conversations are saved like any other chat, titled "Forgeflow advisor".
+
+## Help me choose
+
+Below the advisor, Home also asks three quick questions and recommends a starting point:
+
+1. Can you write down every step in advance?
+2. Do inputs arrive in a predictable format?
+3. Must the same input always lead to the same actions?
+
+| Your answers                                        | Recommendation                 |
+| --------------------------------------------------- | ------------------------------ |
+| Yes to the first two                                | A workflow                     |
+| No to all three                                     | An agent                       |
+| Anything else                                       | A workflow with an agent step  |
+
+The recommendation leans towards workflows on purpose: an agent is worth its cost when the work needs judgment, not by default.
+
+## Spaces
+
+Each space has its own sidebar menu. Home stays at the top of both, so you can always switch.
+
+- **Agents**: New Chat, Build Agent, Agents, Sessions, Schedules, and Environments.
+- **Workflows**: Workflows (search and open), New Workflow (blank canvas or a starter template), Runs (recent runs across every workflow), and Schedules.
+
+<Note>
+  Home and the Workflows space are desktop-only, like Schedules and Sessions. When embedding `@truefoundry/trueforge-ui`, it appears only if your
+  server provides the optional `workflows` port.
+</Note>

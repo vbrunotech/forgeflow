@@ -1,0 +1,208 @@
+---
+title: 'Workflows'
+sidebarTitle: 'Workflows'
+description: 'Automate work with fixed steps you define: HTTP calls, data shaping, branching, and agents where you need judgment.'
+---
+
+A **workflow** runs a graph of steps you define, in an order you control. Use one when you already know the steps. If the steps depend on what the work turns up, use an [agent](/create-agent/overview) instead, or see [how to choose](/hub#workflow-or-agent).
+
+## Build a workflow
+
+1. Open [Home](/hub), choose **Workflows**, then click **New Workflow** in the sidebar. Start blank or from a template.
+2. The canvas starts with a **trigger** node, which decides how the workflow starts. Click it to choose **Manual**, **Schedule**, or **Webhook**, and use **Add trigger** to add more (see [Triggers](#triggers)).
+3. Click the **+** next to a trigger (or beside any step's output), or **Add step**, and pick a [step](#steps). New steps are connected for you; drag between handles to connect steps by hand.
+4. Select a step to configure it.
+5. Click **Execute workflow** at the bottom of the canvas. It saves your changes and runs the workflow now, whatever its trigger. Use **Run with input…** to pass JSON as `trigger.body`.
+
+While a run is in progress, each step on the canvas shows its status. Click a step afterwards to see its **Last run** output and error at the top of its settings, and open the **Runs** tab for earlier runs and links to the session of any agent step.
+
+## Import and export
+
+Workflows move in and out as JSON files, in two formats:
+
+- **Forgeflow JSON** is an exact copy: steps, settings, positions, links, and triggers. Use it to copy a workflow between Forgeflow servers or keep a backup.
+- **n8n JSON** lets you bring workflows over from n8n and send them back. Use **Download for n8n** or **Copy for n8n**, then paste onto an n8n canvas or import the file there.
+
+In the editor, the **Import / Export** menu downloads or copies the workflow in either format, and **Import from file or JSON…** adds another workflow's steps and triggers to the open one. You can also paste workflow JSON (from either tool) straight onto the canvas. On the **Workflows** page, **Import** opens a file or pasted JSON as a new, unsaved workflow. Before importing, a preview shows what was found and anything that did not carry over.
+
+### Converting from n8n
+
+n8n has many more node types and a different data model, so the conversion is best effort:
+
+- Manual, Schedule, and Webhook triggers convert. Other n8n triggers (Slack, Gmail…) become a Webhook trigger with a warning.
+- HTTP Request, Edit Fields (Set), If, Switch, Merge, Wait, Stop and Error, No Operation, Filter, Sort, Limit, Remove Duplicates, Split Out, Aggregate, Summarize, Date & Time, Crypto, and AI Agent convert to the matching step. Only the first condition of an If, Filter, or Switch rule carries over.
+- Nodes with no equivalent yet (Code, app nodes such as Slack) become a **No operation** placeholder named "… (from n8n)", so the links stay and you can replace it.
+- Expressions that only read data, such as `{{ $json.email }}` or `{{ $('Get user').item.json.name }}`, become [templates](#pass-data-between-steps). Anything that runs JavaScript is kept as text and listed in the warnings.
+- n8n passes lists of items from node to node; Forgeflow passes one value per step. Check list steps after importing.
+- Credentials are never part of either format.
+
+## Triggers
+
+| Trigger    | Starts a run when                               | Template values                                         |
+| ---------- | ----------------------------------------------- | ------------------------------------------------------- |
+| **Manual** | You click **Run now** or call the API           | `trigger.body`                                          |
+| **Schedule** | A 5-field cron expression fires, in a time zone | `trigger.scheduled_for`                                 |
+| **Webhook** | Something sends a `POST` to its secret URL     | `trigger.body`, `trigger.query`, `trigger.headers`      |
+
+A workflow can have **several triggers**, and any of them starts the same steps: for example a daily schedule and a webhook. You can add any number of schedules (the workflow runs at the earliest upcoming one), but at most one manual and one webhook trigger. Each trigger appears as its own node on the canvas; click it to change or remove it. A workflow needs at least one trigger.
+
+You can use **Execute workflow** on any workflow, whatever its triggers. Pausing a workflow stops its schedules and webhook, but not **Execute workflow**.
+
+### Webhooks
+
+After saving a webhook workflow, click **Create webhook URL**. The URL is shown once, because only a hash of its token is stored. Creating a new URL stops the old one working.
+
+```bash
+curl -X POST "https://your-server/api/v1/workflow-webhooks/tfwh_..." \
+  -H "content-type: application/json" \
+  -d '{"email": "ada@example.com"}'
+```
+
+The call returns `202` with a `run_id` and does not wait for the run. `Authorization`, `Cookie`, `Proxy-Authorization`, and `X-Api-Key` headers are not stored or passed to steps. Anyone with the URL can start a run, so treat it like a password.
+
+### Schedules
+
+The shortest interval is one minute, and a trigger can start up to about 30 seconds late. A trigger is skipped rather than repeated if it could not be delivered, the server was down, or the workflow already has its maximum runs in progress. This avoids running a step with side effects twice.
+
+## Steps
+
+### HTTP request
+
+Calls a URL and outputs `status`, `headers` (the content type), and `body`, which is parsed if the response is JSON. A non-2xx response fails the step, and its status and body stay available in the output.
+
+Requests are never retried automatically, since repeating a `POST` may not be safe. The time limit defaults to 30 seconds and can be up to 300. Responses over 1 MB are cut off and marked `truncated`.
+
+Requests to private and internal addresses are blocked, including `localhost` and cloud metadata endpoints. To allow specific hosts, set `OUTBOUND_URL_ALLOWED_HOSTS`.
+
+Steps are grouped in the picker as **Core**, **Flow**, and **Data transformation**.
+
+### Edit fields
+
+Builds a new object from earlier values, such as picking fields or renaming them. It has no code and calls nothing. (Its API type is `transform`.)
+
+### If
+
+Compares a value and sends the run down its **true** or **false** handle. Operators are `equals`, `not_equals`, `contains`, `greater_than`, `less_than`, `is_empty`, and `is_not_empty`. Steps on the branch not taken are marked `skipped`. (Its API type is `condition`.)
+
+### Switch
+
+Checks a value against up to 10 rules in order and follows the output of the first match, or **fallback** when none match. Outputs `matched` (the rule index, or null) and `value`.
+
+### Merge
+
+Joins branches back together. **Append** outputs a list of every incoming step's output; **Combine** merges incoming objects into one. Only branches that actually ran contribute.
+
+### Wait
+
+Pauses for up to 15 minutes before continuing.
+
+### Stop and error
+
+Fails the run with a message you write, which can use templates. Use it on a branch that should never be reached.
+
+### No operation
+
+Passes the previous step's output through unchanged. Useful as a labelled placeholder or to tidy up joins.
+
+### Data transformation steps
+
+These work on a list. Set **List** to a template such as `{{ nodes.fetch.output.body.items }}`, or leave it empty to use the previous step's output. A **Field** is a dot path inside each item, such as `user.email`; leave it empty to use the whole item. If the input is not a list, the step fails with a clear error.
+
+| Step                  | What it outputs                                                                 |
+| --------------------- | ------------------------------------------------------------------------------- |
+| **Filter**            | The items whose field passes the check (same operators as If).                  |
+| **Sort**              | The items ordered by the field, ascending or descending. Numbers sort numerically. |
+| **Limit**             | The first or last N items.                                                       |
+| **Remove duplicates** | The items with repeats removed, compared by the field.                          |
+| **Split out**         | Every entry of each item's list field, as one flat list.                        |
+| **Aggregate**         | The field's values collected into a list, or their count, sum, average, min, or max. |
+
+### Date & time
+
+Starts from a date (ISO text, Unix milliseconds, or empty for now), optionally adds or subtracts an amount of seconds to weeks, and outputs `iso`, `unix_ms`, and the `date`, `time`, and `weekday` in the time zone you choose.
+
+### Crypto
+
+Hashes text (MD5, SHA-1, SHA-256, SHA-512), signs it with HMAC, or generates a UUID, as hex or Base64. The HMAC secret is stored in plain text in the workflow.
+
+### Agent
+
+Sends a task to a saved agent and waits for it to finish. It outputs `text` (the agent's final message) and `session_id`, and the full transcript stays available in [Sessions](/sessions).
+
+Nobody is present during a run, so if the agent stops for tool approval, a question, or MCP sign-in, the step **fails** instead of waiting. Use agents that can finish on their own. Like scheduled sessions, these sessions don't use long-term memory, and they don't appear in your chat history.
+
+## Pass data between steps
+
+Use `{{ path }}` in any text field to read a value:
+
+```text
+{{ trigger.body.email }}
+{{ nodes.fetch_user.output.body.name }}
+{{ nodes.assess.output.text }}
+```
+
+`fetch_user` here is the step's **Step id**, shown when you select it. Changing an id in the editor updates references to it.
+
+- A missing value becomes empty text.
+- In Edit fields, If, Switch, and a data step's **List**, a field holding only one reference keeps its type, so a list stays a list.
+- Templates only read values. There are no expressions or functions, so use Edit fields, a data step, or an agent step to reshape data.
+
+## How runs behave
+
+- **One step at a time.** Steps run in dependency order, never in parallel. Where several steps have no dependency between them, the order they were added decides.
+- **Joins run once.** A step with several incoming connections runs once if at least one of them was followed. Use **Merge** to combine their outputs.
+- **No loops.** A connection that would create a cycle is refused.
+- **Errors.** By default a failed step fails the run, and remaining steps are skipped. Set **If this step fails** to **Continue with next steps** to carry on.
+- **Edits are safe.** A run uses the version saved when it started.
+- **Limits.** 50 steps per workflow, 10 runs in progress per workflow, and one hour per run. The hour is checked between steps, and an agent step can run past it up to the agent's own time limit. A step's stored output is limited to 256 KB.
+- **Restarts.** A run interrupted by a server restart is not resumed. It's marked failed after two hours.
+
+## Who can see what
+
+A workflow is visible only to its creator and admins. It always runs as its creator, whoever or whatever triggered it, and creators can only use agents they have access to when saving or running by hand.
+
+<Warning>
+  HTTP headers and bodies are saved in the workflow in plain text and aren't encrypted. There's no credential store yet, so
+  prefer short-lived or narrowly scoped tokens. Responses are saved as step output and are visible in the run history.
+</Warning>
+
+## Not included yet
+
+Compared with a dedicated tool such as n8n, workflows don't yet have a credential store, built-in app connectors, loops that run steps once per item, parallel branches, automatic retries, or custom code steps.
+
+To use n8n alongside TrueForge, connect them over HTTP: an HTTP request step can call an n8n webhook, and n8n can call a TrueForge workflow's webhook URL.
+
+## Use the API
+
+Workflows live under `/api/v1/workflows`:
+
+| Method and path                               | Purpose                        |
+| --------------------------------------------- | ------------------------------ |
+| `GET`, `POST /api/v1/workflows`               | List or create                 |
+| `GET`, `PUT`, `DELETE /api/v1/workflows/{id}` | Read, replace, or delete       |
+| `POST /api/v1/workflows/{id}/webhook-token`   | Issue a webhook token          |
+| `GET`, `POST /api/v1/workflows/{id}/runs`     | List runs or start one         |
+| `GET /api/v1/workflows/{id}/runs/{run_id}`    | Read a run and its step output |
+
+```bash
+curl -X POST "$TRUEFORGE_URL/api/v1/workflows" \
+  -H "content-type: application/json" \
+  -d '{
+    "name": "greet",
+    "manifest": {
+      "triggers": [{ "type": "manual" }],
+      "nodes": [
+        {
+          "id": "shape",
+          "name": "Shape",
+          "position": { "x": 0, "y": 0 },
+          "type": "transform",
+          "values": { "greeting": "Hello {{ trigger.body.name }}" }
+        }
+      ],
+      "edges": []
+    }
+  }'
+```
+
+Starting a run returns immediately with the run in the `running` state, so poll the run for its result. Edges that leave a condition need `"branch": "true"` or `"branch": "false"`; edges that leave a switch need the rule index (`"0"`, `"1"`, …) or `"fallback"`.
