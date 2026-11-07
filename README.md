@@ -1,120 +1,86 @@
 <p align="center">
-  <a href="https://trueforge.dev">
-    <picture>
-      <source srcset="./docs/assets/trueforge-black.svg" media="(prefers-color-scheme: light)">
-      <source srcset="./docs/assets/trueforge-white.svg" media="(prefers-color-scheme: dark)">
-      <img src="./docs/assets/trueforge-black.svg" alt="TrueForge logo">
-    </picture>
-  </a>
-</p>
-<p align="center">The open-source agent harness - the runtime layer that turns an LLM into a working agent</p>
-
-<p align="center">
-  <a href="https://trendshift.io/repositories/155463?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-155463" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/155463/daily?language=TypeScript" alt="truefoundry%2Ftrueforge | Trendshift" width="250" height="55"/></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/truefoundry/trueforge/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
-  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-%3E%3D22.14-green.svg?style=flat-square" alt="Node.js >= 22.14"></a>
-  <a href="https://trueforge.dev"><img src="https://img.shields.io/badge/Documentation-trueforge.dev-blue.svg?style=flat-square" alt="Documentation"></a>
-  <a href="https://trueforge.dev/quickstart"><img src="https://img.shields.io/badge/Quickstart-trueforge.dev/quickstart-blue.svg?style=flat-square" alt="Quickstart"></a>
-  <a href="https://trueforge.dev/api/overview"><img src="https://img.shields.io/badge/SDK-trueforge.dev/api/overview-blue.svg?style=flat-square" alt="SDK"></a>
-</p>
-<p align="center">
-  <a href="https://www.npmjs.com/package/@truefoundry/trueforge"><img src="https://img.shields.io/npm/v/@truefoundry/trueforge?label=trueforge&logo=npm&style=flat-square" alt="npm @truefoundry/trueforge"></a>
-  <a href="https://www.npmjs.com/package/@truefoundry/trueforge-sdk"><img src="https://img.shields.io/npm/v/@truefoundry/trueforge-sdk?label=trueforge-sdk&logo=npm&style=flat-square" alt="npm @truefoundry/trueforge-sdk"></a>
-  <a href="https://www.npmjs.com/package/@truefoundry/trueforge-ui"><img src="https://img.shields.io/npm/v/@truefoundry/trueforge-ui?label=trueforge-ui&logo=npm&style=flat-square" alt="npm @truefoundry/trueforge-ui"></a>
-  <a href="https://www.npmjs.com/package/@truefoundry/trueforge-core"><img src="https://img.shields.io/npm/v/@truefoundry/trueforge-core?label=trueforge-core&logo=npm&style=flat-square" alt="npm @truefoundry/trueforge-core"></a>
-  <a href="https://tfy.jfrog.io/ui/packages/oci:%2F%2Ftrueforge"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftruefoundry%2Ftrueforge%2Frefs%2Fheads%2Fmain%2Fcharts%2Ftrueforge%2FChart.yaml&query=%24.version&label=trueforge&logo=helm&style=flat-square" alt="helm trueforge"></a>
-  <a href="https://deepwiki.com/truefoundry/trueforge"><img src="https://deepwiki.com/badge.svg?style=flat-square" alt="Ask DeepWiki"></a>
-</p>
-
-# TrueForge
-
-TrueForge runs the agent execution loop for you - model calls, MCP tools, skills, sandboxing, approvals, context management, and session state - and exposes it three ways: a **chat UI**, an **HTTP API** with a TypeScript **SDK**, and an embeddable **UI SDK**.
-
-![TrueForge Chat UI](./docs/images/hero.png)
-
-## Why TrueForge?
-
-Building an agent is easy. Running one well is not - you need streaming, session persistence, tool servers, sandboxing, approvals, and a UI. TrueForge gives you that out of the box:
-
-- **Initial setup from catalogs** - configure [models](https://trueforge.dev/models), [MCP servers](https://trueforge.dev/mcp-servers), [skills](https://trueforge.dev/skills), and a [sandbox](https://trueforge.dev/sandbox) once; agents pick from what you connected. Presets come from shipped YAML catalogs you can customize.
-- **Any model provider** - OpenAI, Anthropic, Google Gemini, and other catalog providers, or any OpenAI-compatible endpoint.
-- **MCP tools** - remote MCP servers with header auth or OAuth, including in-chat authorization.
-- **Skills** - git-backed `SKILL.md` instruction packs, loaded on demand in the sandbox.
-- **Sandbox as a tool** - isolated code/file execution (Daytona today; more providers planned), provisioned only when needed. Secrets stay in the harness.
-- **Human checkpoints** - tool approval, ask-user-questions, and Generative UI in chat.
-- **Context engineering** - subagents, deferred tool loading, Code Mode, large-result offloading, and compaction.
-- **Chat UI + SDK** - use the bundled UI, automate with `@truefoundry/trueforge-sdk`, or embed `@truefoundry/trueforge-ui`.
-
-Not every job needs an agent. **[Home](https://trueforge.dev/hub)** opens two spaces, agents and **[workflows](https://trueforge.dev/workflows)**: deterministic, n8n-style automations you build on a canvas, with HTTP, transform, condition, and agent steps. When you can write the steps down, use a workflow. When the next step depends on what the last one found, use an agent. Or combine them, with an agent step for the part that needs judgment.
-
-It scales down and up: **local mode** (one process, SQLite) or **hosted mode** (Postgres + Redis, Docker Compose, Helm, or Railway).
-
-## Getting started
-
-### Quickstart with `npx`
-
-```
-npx @truefoundry/trueforge@latest
-```
-
-Use the [Quickstart](https://trueforge.dev/quickstart) guide to run TrueForge using various methods (Local, Docker Compose, Kubernetes, or Railway). Connect models, tools, skills and build your first reusable agent.
-
-To work on TrueForge from this repository, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Architecture
-
-<p align="center">
   <picture>
-    <source srcset="./docs/assets/architecture-dark.svg" media="(prefers-color-scheme: dark)">
-    <source srcset="./docs/assets/architecture-light.svg" media="(prefers-color-scheme: light)">
-    <img src="./docs/assets/architecture-light.svg" alt="TrueForge architecture: Chat UI and SDK connect to the TrueForge server HTTP API and agent loop, which talks to SQLite or Postgres and bring-your-own models, MCP servers, and sandbox" width="920">
+    <source srcset="./packages/frontend/src/brand/forgeflow-logo-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="./packages/frontend/src/brand/forgeflow-logo-light.svg" alt="Forgeflow" width="320">
   </picture>
 </p>
 
-| Mode   | Best for                    | Storage  | Extra infra      | How to run                       |
-| ------ | --------------------------- | -------- | ---------------- | -------------------------------- |
-| Local  | Personal use, trying it out | SQLite   | None             | `npx @truefoundry/trueforge`     |
-| Hosted | Teams, multi-replica        | Postgres | Postgres + Redis | Docker Compose, Helm, or Railway |
+<p align="center"><strong>Agents and workflows, side by side.</strong></p>
 
-> **Local mode is for your machine only.** It is a convenient way to try TrueForge — not a production or internet-facing setup. There is no login by default, and data lives in a local SQLite file. Please keep it on localhost. We cannot take responsibility for data loss or unauthorized access if local mode is used beyond that. For a shared or production deployment, use hosted mode.
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-%3E%3D22.14-green.svg?style=flat-square" alt="Node.js >= 22.14"></a>
+</p>
 
-## Documentation
+Forgeflow is a self-hostable platform for building AI agents and deterministic workflows, and for choosing the right one for each job.
 
-| Section                                                             | What you'll find                                                  |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [Introduction](https://trueforge.dev/introduction)                  | What an agent harness is and how TrueForge fits together          |
-| [Quickstart](https://trueforge.dev/quickstart)                      | Run local or hosted, build your first agent                       |
-| [Initial Setup](https://trueforge.dev/harness/initial-setup)        | Models, MCP, skills, sandbox - catalogs and overrides             |
-| [Create an Agent](https://trueforge.dev/create-agent/overview)      | Select resources; tool approval, questions, Generative UI         |
-| [Sessions](https://trueforge.dev/sessions)                          | Inspect past runs: turns, tool calls, subagents, tokens, timing   |
-| [Schedules](https://trueforge.dev/schedules)                        | Run a saved agent on a recurring cadence, unattended              |
-| [Home](https://trueforge.dev/hub)                                   | The Agents and Workflows spaces, and how to choose                |
-| [Workflows](https://trueforge.dev/workflows)                        | Deterministic automations: triggers, steps, runs, webhooks        |
-| [Harness Capabilities](https://trueforge.dev/key-features/overview) | Sandbox-as-tool, subagents, deferred tools, Code Mode, compaction |
-| [Setup Login](https://trueforge.dev/authentication/overview)        | Optional OIDC for shared deployments                              |
-| [Benchmarking](https://trueforge.dev/benchmarking)                  | Cost/accuracy vs Claude Managed Agents and deepagents             |
-| [SDK](https://trueforge.dev/api/overview)                           | TypeScript client: sessions, turns, events                        |
-| [Chat UI](https://trueforge.dev/chat-ui)                            | Bundled UI and embedding `@truefoundry/trueforge-ui`              |
-| [API Reference](https://trueforge.dev/api-reference)                | OpenAPI paths and schemas                                         |
+Some work needs judgment: reading messy input, researching, triaging. That's what agents are for. Most work is predictable: sync this, check that, route this webhook. That's what workflows are for: cheaper, faster, and every step is auditable. Forgeflow gives you both, and lets you put an agent step inside a workflow for the one part that needs judgment.
 
-## Benchmarks
+## Highlights
 
-We compare TrueForge against Claude Managed Agents and deepagents on the same tasks, tools, and model - same accuracy, lower cost. Reproduce it from [`benchmark/`](benchmark/). Write-up: [Benchmarking](https://trueforge.dev/benchmarking).
+### Home and the advisor
+
+- One entry point to two spaces, **Agents** and **Workflows**, each with its own menu.
+- An **advisor chat**: describe what you want to automate in your own words. It recommends an agent or a workflow, explains why, and drafts it for you to review and save.
+
+### Agents
+
+- Chat with agents, and build your own with instructions, models, MCP servers, and skills.
+- Session history, schedules, and sandboxed environments for running code.
+
+### Workflows (n8n-style)
+
+- **Visual editor**: trigger nodes on the canvas, a searchable step picker, a **+** on every output, and a one-click **Execute workflow** with live step status and per-step output.
+- **17 step types**:
+  - Core: HTTP request, Edit fields, Agent
+  - Flow: If, Switch, Merge, Wait, Stop and error, No operation
+  - Data: Filter, Sort, Limit, Remove duplicates, Split out, Aggregate, Date & time, Crypto
+- **Multiple triggers** per workflow: manual, any number of schedules (cron), and a webhook.
+- Templates such as `{{ trigger.body.email }}` and `{{ nodes.fetch.output.status }}` pass data between steps.
+- **Run history** for each workflow and across all workflows.
+- **Import and export** in Forgeflow JSON (an exact copy) or **n8n JSON**: bring workflows over from n8n, send them back, or paste workflow JSON straight onto the canvas.
+
+## Quick start
+
+Requirements: Node.js 22.14 or later, and pnpm through Corepack.
+
+```bash
+git clone git@github.com:vbrunotech/forgeflow.git
+cd forgeflow
+nvm use                     # Node version from .nvmrc
+corepack enable             # pnpm version pinned in package.json
+pnpm install
+cp packages/trueforge/.env.example packages/trueforge/.env
+pnpm standalone:dev         # SQLite, no other services needed
+```
+
+Open http://localhost:3000. To use another port, run `FRONTEND_PORT=3003 pnpm standalone:dev`. The API listens on http://localhost:8790.
+
+Add a model provider in **Settings** to start chatting and to enable the advisor.
+
+For Postgres and Redis (multi-replica), run `pnpm dev:infra` in one terminal and `pnpm dev` in another.
+
+## Project layout
+
+| Package                         | What it is                                                   |
+| ------------------------------- | ------------------------------------------------------------ |
+| `packages/trueforge`            | API server: agents, sessions, the workflow engine, schedules |
+| `packages/trueforge-core`       | Agent runtime core                                           |
+| `packages/trueforge-ui`         | React UI library: Home, Agents, the Workflows editor         |
+| `packages/frontend`             | The Forgeflow web app                                        |
+| `packages/assistant-ui-runtime` | Chat runtime and shared server types                         |
+| `packages/trueforge-sdk`        | Generated TypeScript SDK                                     |
+
+Guides for workflows and Home live in [`docs/workflows.mdx`](./docs/workflows.mdx) and [`docs/hub.mdx`](./docs/hub.mdx).
+
+## Status
+
+Forgeflow is under active development. Planned next: a sandboxed **Code** step, app integrations (Slack, email, GitHub…) with a credentials store, and loops over list items.
 
 ## Contributing
 
-We love contributions - bug reports, features, and docs fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md). Fork PRs should change source only; maintainers regenerate the SDK after merge.
+Issues and pull requests are welcome at [github.com/vbrunotech/forgeflow](https://github.com/vbrunotech/forgeflow/issues). See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the development setup and checks.
 
-To report a security vulnerability, submit it through our [Vulnerability Disclosure Program](https://vdp.truefoundry.com) instead of opening a public issue. See [SECURITY.md](SECURITY.md) for details.
+## Credits and license
 
-## Talk to us
-
-- [Community Discord](https://discord.com/invite/fHeGRvakb)
-- Founder emails: [abhishek@truefoundry.com](mailto:abhishek@truefoundry.com) / [anuraag@truefoundry.com](mailto:anuraag@truefoundry.com)
-
-## License
-
-TrueForge is released under the [MIT License](LICENSE).
+Forgeflow is built on [TrueForge](https://github.com/truefoundry/trueforge) by TrueFoundry, the open-source agent harness. It is released under the MIT License; see [`LICENSE`](./LICENSE), which keeps the original copyright notice.
